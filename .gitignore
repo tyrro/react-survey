@@ -6,6 +6,7 @@
 /InstalledFiles
 /node_modules
 /.next
+.eslintcache
 /pkg/
 /spec/reports/
 /spec/examples.txt
