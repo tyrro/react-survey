@@ -38,6 +38,7 @@
 .rvmrc
 
 # testing
+.nyc_output
 /coverage
 /cypress/screenshots
 /cypress/videos

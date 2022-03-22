@@ -3,6 +3,6 @@
 describe('Homepage', () => {
   it('displays a welcome text', () => {
     cy.visit('/');
-    cy.contains('Welcome');
+    expect(cy.findByTestId('welcome-text').contains('Welcome'));
   });
 });
