@@ -7,7 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "nyc": {
+    "report-dir": "coverage/cypress",
+    "excludeAfterRemap": true
   },
   "dependencies": {
     "next": "12.1.0",
@@ -15,10 +21,15 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "3.9.12",
     "@nimblehq/eslint-config-nimble": "2.2.1",
+    "@testing-library/cypress": "8.0.2",
     "autoprefixer": "10.4.4",
+    "babel-plugin-istanbul": "6.1.1",
+    "cypress": "9.5.2",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
+    "eslint-plugin-cypress": "2.12.1",
     "husky": "6",
     "lint-staged": "12.3.7",
     "postcss": "8.4.12",
