@@ -3,8 +3,8 @@ import Link from 'next/link';
 const Login = () => {
   return (
     <form className="w-80">
-      <div className="h-24 mb-5">
-        <label className="block text-white text-base font-extrabold mb-3" htmlFor="email">
+      <div className="mb-6">
+        <label className="block text-white text-baseSmall font-extrabold mb-2" htmlFor="email">
           Email
         </label>
         <input
@@ -15,8 +15,8 @@ const Login = () => {
           required
         />
       </div>
-      <div className="h-24 mb-5">
-        <label className="block text-white text-base font-extrabold mb-3" htmlFor="password">
+      <div className="mb-6">
+        <label className="block text-white text-baseSmall font-extrabold mb-2" htmlFor="password">
           Password
         </label>
         <input
@@ -27,14 +27,12 @@ const Login = () => {
           required
         />
         <Link href="/forgot-password">
-          <a className="block relative w-1/5 text-white/50 ml-auto bottom-10">Forgot?</a>
+          <a className="block relative w-1/6 text-white/50 text-baseSmall ml-auto right-3 bottom-3 -mt-6">Forgot?</a>
         </Link>
       </div>
-      <div className="h-24">
-        <button className="w-full h-14 bg-white text-baseLarge rounded-xl" data-test-id="btn-login" type="submit">
-          Sign In
-        </button>
-      </div>
+      <button className="w-full h-14 bg-white text-baseLarge font-extrabold rounded-xl" data-test-id="btn-sign-in" type="submit">
+        Sign in
+      </button>
     </form>
   );
 };
