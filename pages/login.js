@@ -12,15 +12,17 @@ export const loginTestIds = {
 const Login = () => {
   return (
     <Background imagePath="/background.png">
-      <div className="mb-8">
-        <div className="mb-6">
-          <Image src={logo} alt="logo" />
+      <div className="h-full flex flex-col justify-center items-center">
+        <div className="mb-8">
+          <div className="mb-5">
+            <Image src={logo} alt="logo" />
+          </div>
+          <p className="text-white/60 text-center text-baseLarge" data-test-id={loginTestIds.logInText}>
+            Sign in to Nimble
+          </p>
         </div>
-        <p className="text-white/60 text-center text-baseLarge" data-test-id={loginTestIds.logInText}>
-          Sign in to Nimble
-        </p>
+        <LoginForm />
       </div>
-      <LoginForm />
     </Background>
   );
 };
