@@ -1,13 +1,23 @@
 import { render, screen } from '@testing-library/react';
-import Login from './login';
+
+import { loginFormTestIds } from '@/components/forms/Login';
+import Login, { loginTestIds } from './login';
 
 describe(Login, () => {
-  it('renders sign in text', () => {
+  beforeEach(() => {
     render(<Login />);
+  });
 
-    const signInText = screen.getByTestId('sign-in-text');
+  it('renders log in text', () => {
+    const logInText = screen.getByTestId(loginTestIds.logInText);
 
-    expect(signInText).toBeVisible();
-    expect(signInText).toHaveTextContent('Sign in to Nimble');
+    expect(logInText).toBeVisible();
+    expect(logInText).toHaveTextContent('Sign in to Nimble');
+  });
+
+  it('renders a login form', () => {
+    const logInForm = screen.getByTestId(loginFormTestIds.form);
+
+    expect(logInForm).toBeVisible();
   });
 });

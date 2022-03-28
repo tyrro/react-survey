@@ -1,29 +1,44 @@
 import { render, screen } from '@testing-library/react';
-import Login from '.';
+import Login, { loginFormTestIds } from '.';
 
-const testIDs = {
-  emailField: 'input-email',
-  passwordField: 'input-password',
-  signInButton: 'btn-sign-in',
-};
-
-describe(Login, () => {
+describe('Login', () => {
   beforeEach(() => {
     render(<Login />);
   });
 
-  it('renders an email field', () => {
-    expect(screen.getByText('Email')).toBeInTheDocument();
-    expect(screen.getByTestId(testIDs.emailField)).toBeInTheDocument();
+  it('renders an email label', () => {
+    const emailLabel = screen.getByTestId(loginFormTestIds.emailLabel);
+
+    expect(emailLabel).toBeVisible();
+    expect(emailLabel).toHaveTextContent('Email');
+  });
+
+  it('renders an email input field', () => {
+    const emailInput = screen.getByTestId(loginFormTestIds.emailField);
+
+    expect(emailInput).toBeVisible();
+    expect(emailInput).toHaveAttribute('type', 'email');
   });
 
   it('renders an password field', () => {
-    expect(screen.getByText('Password')).toBeInTheDocument();
-    expect(screen.getByTestId(testIDs.passwordField)).toBeInTheDocument();
+    const passwordLabel = screen.getByTestId(loginFormTestIds.passwordLabel);
+
+    expect(passwordLabel).toBeVisible();
+    expect(passwordLabel).toHaveTextContent('Password');
+  });
+
+  it('renders an password input field', () => {
+    const passwordInput = screen.getByTestId(loginFormTestIds.passwordField);
+
+    expect(passwordInput).toBeVisible();
+    expect(passwordInput).toHaveAttribute('type', 'password');
   });
 
   it('renders a sign in button', () => {
-    expect(screen.getByText('Sign in')).toBeInTheDocument();
-    expect(screen.getByTestId(testIDs.signInButton)).toBeInTheDocument();
+    const signInButton = screen.getByTestId(loginFormTestIds.signInButton);
+
+    expect(signInButton).toBeVisible();
+    expect(signInButton).toHaveTextContent('Sign in');
+    expect(signInButton).toHaveAttribute('type', 'submit');
   });
 });

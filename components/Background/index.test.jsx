@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import Background from '.';
+import Background, { backgroundTestIds } from '.';
 
-describe(Background, () => {
+describe('Background', () => {
   it('renders the children component', () => {
     const props = {
       imagePath: '/background.png',
@@ -10,7 +10,7 @@ describe(Background, () => {
 
     render(<Background {...props} />);
 
-    const foregroundChildren = screen.getByTestId('foreground-children');
+    const foregroundChildren = screen.getByTestId(backgroundTestIds.foregroundChildren);
 
     expect(foregroundChildren).toHaveTextContent(props.children);
   });
