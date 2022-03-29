@@ -21,10 +21,10 @@ describe('PasswordResetForm', () => {
   });
 
   it('renders a button to reset password', () => {
-    const loginButton = screen.getByTestId(passwordResetFormTestIds.passwordResetButton);
+    const passwordResetButton = screen.getByTestId(passwordResetFormTestIds.passwordResetButton);
 
-    expect(loginButton).toBeVisible();
-    expect(loginButton).toHaveTextContent('Send Recovery Email');
-    expect(loginButton).toHaveAttribute('type', 'submit');
+    expect(passwordResetButton).toBeVisible();
+    expect(passwordResetButton).toHaveTextContent('Send Recovery Email');
+    expect(passwordResetButton).toHaveAttribute('type', 'submit');
   });
 });
