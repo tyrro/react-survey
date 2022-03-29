@@ -30,6 +30,10 @@ Run tests headlessly:
 
 `yarn cypress:run`
 
+Run unit tests:
+
+`yarn test`
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
