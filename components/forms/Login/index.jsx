@@ -9,7 +9,7 @@ export const loginFormTestIds = {
   loginButton: 'btn-login',
 };
 
-const Login = () => {
+const LoginForm = () => {
   return (
     <form className="w-full" data-test-id={loginFormTestIds.form}>
       <div className="mb-6">
@@ -58,4 +58,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;

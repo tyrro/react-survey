@@ -6,7 +6,7 @@ import PasswordResetForm from '@/components/forms/PasswordReset';
 
 import logo from '@/public/logo.svg';
 
-export const resetPasswordPageTestIds = {
+export const passwordResetPageTestIds = {
   headlineText: 'headline-text',
 };
 
@@ -22,7 +22,7 @@ const PasswordReset = () => {
             <div className="h-10 mb-6">
               <Image src={logo} alt="logo" layout="fixed" width="327" height="40" />
             </div>
-            <p className="text-white/60 text-center text-base-large" data-test-id={resetPasswordPageTestIds.headlineText}>
+            <p className="text-white/60 text-center text-base-large" data-test-id={passwordResetPageTestIds.headlineText}>
               Enter your email to receive instruction for resetting your password
             </p>
           </div>

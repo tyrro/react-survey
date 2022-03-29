@@ -2,10 +2,10 @@ export const passwordResetFormTestIds = {
   form: 'password-reset-form',
   emailLabel: 'email',
   emailField: 'input-email',
-  loginButton: 'btn-password-reset',
+  passwordResetButton: 'btn-password-reset',
 };
 
-const PasswordReset = () => {
+const PasswordResetForm = () => {
   return (
     <form className="w-full" data-test-id={passwordResetFormTestIds.form}>
       <div className="mb-6">
@@ -26,7 +26,7 @@ const PasswordReset = () => {
       </div>
       <button
         className="w-full h-14 bg-white text-base-large font-extrabold rounded-xl"
-        data-test-id={passwordResetFormTestIds.loginButton}
+        data-test-id={passwordResetFormTestIds.passwordResetButton}
         type="submit"
       >
         Send Recovery Email
@@ -35,4 +35,4 @@ const PasswordReset = () => {
   );
 };
 
-export default PasswordReset;
+export default PasswordResetForm;
