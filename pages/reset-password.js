@@ -5,10 +5,15 @@ import BackButton from '@/components/BackButton';
 import PasswordResetForm from '@/components/forms/PasswordReset';
 
 import logo from '@/public/logo-large.svg';
+import bellIcon from '@/public/bell-icon.svg';
+import Alert from '@/components/Alert';
 
 export const passwordResetPageTestIds = {
   headlineText: 'password-reset__headline-text',
 };
+
+const ALERT_TITLE = 'Check your email';
+const ALERT_DESCRIPTION = "We've emailed you instructions to reset your password";
 
 const PasswordReset = () => {
   return (
@@ -25,6 +30,9 @@ const PasswordReset = () => {
             <p className="text-white/60 text-center text-base-large" data-test-id={passwordResetPageTestIds.headlineText}>
               Enter your email to receive instruction for resetting your password
             </p>
+          </div>
+          <div className="mb-6">
+            <Alert icon={bellIcon} title={ALERT_TITLE} description={ALERT_DESCRIPTION} />
           </div>
           <PasswordResetForm />
         </div>
