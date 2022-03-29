@@ -35,10 +35,10 @@ describe('Login', () => {
   });
 
   it('renders a sign in button', () => {
-    const signInButton = screen.getByTestId(loginFormTestIds.signInButton);
+    const loginButton = screen.getByTestId(loginFormTestIds.loginButton);
 
-    expect(signInButton).toBeVisible();
-    expect(signInButton).toHaveTextContent('Sign in');
-    expect(signInButton).toHaveAttribute('type', 'submit');
+    expect(loginButton).toBeVisible();
+    expect(loginButton).toHaveTextContent('Sign in');
+    expect(loginButton).toHaveAttribute('type', 'submit');
   });
 });

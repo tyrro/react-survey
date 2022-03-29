@@ -6,12 +6,12 @@ export const loginFormTestIds = {
   emailField: 'input-email',
   passwordLabel: 'password',
   passwordField: 'input-password',
-  signInButton: 'btn-sign-in',
+  loginButton: 'btn-login',
 };
 
 const Login = () => {
   return (
-    <form className="w-80" data-test-id={loginFormTestIds.form}>
+    <form className="w-full" data-test-id={loginFormTestIds.form}>
       <div className="mb-6">
         <label
           className="block text-white text-baseSmall font-extrabold mb-2"
@@ -49,7 +49,7 @@ const Login = () => {
       </div>
       <button
         className="w-full h-14 bg-white text-baseLarge font-extrabold rounded-xl"
-        data-test-id={loginFormTestIds.signInButton}
+        data-test-id={loginFormTestIds.loginButton}
         type="submit"
       >
         Sign in
