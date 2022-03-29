@@ -43,7 +43,7 @@ const Login = () => {
           type="password"
           required
         />
-        <Link href="/forgot-password">
+        <Link href="/reset-password">
           <a className="absolute text-white/50 text-baseSmall right-3 bottom-[18px]">Forgot?</a>
         </Link>
       </div>

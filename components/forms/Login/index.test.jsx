@@ -34,7 +34,7 @@ describe('Login', () => {
     expect(passwordInput).toHaveAttribute('type', 'password');
   });
 
-  it('renders a sign in button', () => {
+  it('renders a login button', () => {
     const loginButton = screen.getByTestId(loginFormTestIds.loginButton);
 
     expect(loginButton).toBeVisible();
