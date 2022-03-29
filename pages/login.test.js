@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { loginFormTestIds } from '@/components/forms/Login';
 import Login, { loginTestIds } from './login';
 
-describe(Login, () => {
+describe('Login', () => {
   beforeEach(() => {
     render(<Login />);
   });
