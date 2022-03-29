@@ -17,7 +17,7 @@ const Login = () => {
           <div className="mb-5">
             <Image src={logo} alt="logo" height={48} />
           </div>
-          <p className="text-white/60 text-center text-baseLarge" data-test-id={loginPageTestIds.headlineText}>
+          <p className="text-white/60 text-center text-base-large" data-test-id={loginPageTestIds.headlineText}>
             Sign in to Nimble
           </p>
         </div>

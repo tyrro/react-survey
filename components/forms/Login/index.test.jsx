@@ -20,14 +20,14 @@ describe('Login', () => {
     expect(emailInput).toHaveAttribute('type', 'email');
   });
 
-  it('renders an password field', () => {
+  it('renders a password field', () => {
     const passwordLabel = screen.getByTestId(loginFormTestIds.passwordLabel);
 
     expect(passwordLabel).toBeVisible();
     expect(passwordLabel).toHaveTextContent('Password');
   });
 
-  it('renders an password input field', () => {
+  it('renders a password input field', () => {
     const passwordInput = screen.getByTestId(loginFormTestIds.passwordField);
 
     expect(passwordInput).toBeVisible();

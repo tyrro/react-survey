@@ -9,8 +9,8 @@ module.exports = {
         neuzeit: '"Neuzeit S LT Std"',
       },
       fontSize: {
-        baseLarge: ['17px', '22px'],
-        baseSmall: ['15px', '20px'],
+        'base-small': ['15px', '20px'],
+        'base-large': ['17px', '22px'],
       },
     },
   },
