@@ -1,19 +1,19 @@
 import Image from 'next/image';
 
-import Background from '@/components/Background';
+import Alert from '@/components/Alert';
 import BackButton from '@/components/BackButton';
+import Background from '@/components/Background';
 import PasswordResetForm from '@/components/forms/PasswordReset';
 
 import logo from '@/public/logo-large.svg';
-import bellIcon from '@/public/bell-icon.svg';
-import Alert from '@/components/Alert';
+import bellIcon from '@/public/bell.svg';
 
 export const passwordResetPageTestIds = {
   headlineText: 'password-reset__headline-text',
 };
 
-const ALERT_TITLE = 'Check your email';
-const ALERT_DESCRIPTION = "We've emailed you instructions to reset your password";
+const SUCCESS_TITLE = 'Check your email';
+const SUCCESS_DESCRIPTION = "We've emailed you instructions to reset your password";
 
 const PasswordReset = () => {
   return (
@@ -32,7 +32,7 @@ const PasswordReset = () => {
             </p>
           </div>
           <div className="mb-6">
-            <Alert icon={bellIcon} title={ALERT_TITLE} description={ALERT_DESCRIPTION} />
+            <Alert icon={bellIcon} title={SUCCESS_TITLE} description={SUCCESS_DESCRIPTION} />
           </div>
           <PasswordResetForm />
         </div>
