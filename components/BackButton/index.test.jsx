@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useRouter } from 'next/router';
+
 import BackButton, { backButtonTestIds } from '.';
 
 describe('BackButton', () => {
