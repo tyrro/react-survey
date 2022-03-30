@@ -1,8 +1,11 @@
+import Input from '@/components/Input';
+import Button from '@/components/Button';
+
 export const passwordResetFormTestIds = {
-  form: 'password-reset-form',
-  emailLabel: 'email',
-  emailField: 'input-email',
-  passwordResetButton: 'btn-password-reset',
+  form: 'password-reset__form',
+  emailLabel: 'password-reset__email',
+  emailField: 'password-reset__input-email',
+  passwordResetButton: 'password-reset__button',
 };
 
 const PasswordResetForm = () => {
@@ -16,21 +19,11 @@ const PasswordResetForm = () => {
         >
           Email
         </label>
-        <input
-          className="w-full h-14 bg-white/20 text-white text-base-large rounded-xl px-3 py-1.5 focus:outline-none focus:shadow-none"
-          id="email"
-          data-test-id={passwordResetFormTestIds.emailField}
-          type="email"
-          required
-        />
+        <Input id="email" type="email" dataTestId={passwordResetFormTestIds.emailField} required={true} />
       </div>
-      <button
-        className="w-full h-14 bg-white text-base-large font-extrabold rounded-xl"
-        data-test-id={passwordResetFormTestIds.passwordResetButton}
-        type="submit"
-      >
-        Send Recovery Email
-      </button>
+      <Button type="submit" size="large" dark={false} dataTestId={passwordResetFormTestIds.passwordResetButton}>
+        <div className="pt-1 pr-2">Send Recovery Email</div>
+      </Button>
     </form>
   );
 };
