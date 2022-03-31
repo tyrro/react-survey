@@ -12,7 +12,7 @@ describe('BackButton', () => {
     expect(backButton).toBeVisible();
   });
 
-  it('goes to the previous page upon click', () => {
+  it('routes to the previous page upon click', () => {
     const mockRouter = { back: jest.fn() };
     useRouter.mockReturnValue(mockRouter);
 

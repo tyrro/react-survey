@@ -8,14 +8,14 @@ describe('Button', () => {
       type: 'reset',
       size: 'small',
       dark: true,
-      dataTestId: 'reset_button',
+      'data-test-id': 'reset_button',
     };
 
     const label = 'Reset';
 
     render(<Button {...props}>{label}</Button>);
 
-    const button = screen.getByTestId(props.dataTestId);
+    const button = screen.getByTestId(props['data-test-id']);
 
     expect(button).toBeVisible();
     expect(button).toHaveTextContent(label);

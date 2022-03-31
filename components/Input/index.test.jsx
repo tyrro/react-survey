@@ -9,12 +9,12 @@ describe('Input', () => {
       type: 'email',
       required: true,
       className: 'email-bold',
-      dataTestId: 'email_input',
+      'data-test-id': 'email_input',
     };
 
     render(<Input {...props} />);
 
-    const input = screen.getByTestId(props.dataTestId);
+    const input = screen.getByTestId(props['data-test-id']);
 
     expect(input).toBeVisible();
     expect(input).toHaveAttribute('type', props.type);

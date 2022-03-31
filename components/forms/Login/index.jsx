@@ -23,7 +23,7 @@ const LoginForm = () => {
         >
           Email
         </label>
-        <Input id="email" type="email" dataTestId={loginFormTestIds.emailField} required />
+        <Input id="email" type="email" data-test-id={loginFormTestIds.emailField} required />
       </div>
       <div className="relative mb-6">
         <label
@@ -33,12 +33,12 @@ const LoginForm = () => {
         >
           Password
         </label>
-        <Input id="password" type="password" dataTestId={loginFormTestIds.passwordField} required className="pr-[23%]" />
+        <Input id="password" type="password" data-test-id={loginFormTestIds.passwordField} required className="pr-[23%]" />
         <Link href="/reset-password">
           <a className="absolute text-white/50 text-base-small right-3 bottom-4">Forgot?</a>
         </Link>
       </div>
-      <Button type="submit" size="medium" dark={false} dataTestId={loginFormTestIds.loginButton}>
+      <Button type="submit" size="medium" dark={false} data-test-id={loginFormTestIds.loginButton}>
         Sign in
       </Button>
     </form>

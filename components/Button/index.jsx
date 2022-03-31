@@ -8,27 +8,21 @@ export const SIZE_CLASSES = {
   huge: 'w-176 h-14',
 };
 
-const Button = ({ type, size, dark, children, dataTestId }) => {
+const Button = ({ size, dark, children, ...attributes }) => {
   const sizeClass = SIZE_CLASSES[size];
   const backgroundClass = dark ? 'bg-dark' : 'bg-white';
 
   return (
-    <button
-      className={`text-base-large font-extrabold rounded-[10px] ${sizeClass} ${backgroundClass}`}
-      data-test-id={dataTestId}
-      type={type}
-    >
+    <button className={`text-base-large font-extrabold rounded-[10px] ${sizeClass} ${backgroundClass}`} {...attributes}>
       {children}
     </button>
   );
 };
 
 Button.propTypes = {
-  type: PropTypes.oneOf(['button', 'submit', 'reset']).isRequired,
   size: PropTypes.oneOf(['xs', 'small', 'medium', 'large', 'huge']).isRequired,
   dark: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
-  dataTestId: PropTypes.string.isRequired,
 };
 
 export default Button;
