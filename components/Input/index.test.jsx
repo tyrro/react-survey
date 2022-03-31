@@ -8,6 +8,7 @@ describe('Input', () => {
       id: 'email',
       type: 'email',
       required: true,
+      className: 'email-bold',
       dataTestId: 'email_input',
     };
 
@@ -17,5 +18,6 @@ describe('Input', () => {
 
     expect(input).toBeVisible();
     expect(input).toHaveAttribute('type', props.type);
+    expect(input).toHaveClass(props.className);
   });
 });

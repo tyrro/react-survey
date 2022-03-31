@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import Button from '.';
+import Button, { SIZE_CLASSES } from '.';
 
 describe('Button', () => {
   it('renders a button', () => {
@@ -9,15 +9,18 @@ describe('Button', () => {
       size: 'small',
       dark: true,
       dataTestId: 'reset_button',
-      children: 'reset',
     };
 
-    render(<Button {...props} />);
+    const label = 'Reset';
+
+    render(<Button {...props}>{label}</Button>);
 
     const button = screen.getByTestId(props.dataTestId);
 
     expect(button).toBeVisible();
-    expect(button).toHaveTextContent(props.children);
+    expect(button).toHaveTextContent(label);
     expect(button).toHaveAttribute('type', props.type);
+    expect(button).toHaveClass(SIZE_CLASSES[props.size]);
+    expect(button).toHaveClass('bg-dark');
   });
 });

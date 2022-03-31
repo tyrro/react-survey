@@ -2,10 +2,10 @@ import Input from '@/components/Input';
 import Button from '@/components/Button';
 
 export const passwordResetFormTestIds = {
-  form: 'password-reset__form',
-  emailLabel: 'password-reset__email',
-  emailField: 'password-reset__input-email',
-  passwordResetButton: 'password-reset__button',
+  form: 'password-reset-form',
+  emailLabel: 'password-reset-form__email',
+  emailField: 'password-reset-form__input-email',
+  passwordResetButton: 'password-reset-form__button',
 };
 
 const PasswordResetForm = () => {
@@ -19,7 +19,7 @@ const PasswordResetForm = () => {
         >
           Email
         </label>
-        <Input id="email" type="email" dataTestId={passwordResetFormTestIds.emailField} required={true} />
+        <Input id="email" type="email" dataTestId={passwordResetFormTestIds.emailField} required />
       </div>
       <Button type="submit" size="large" dark={false} dataTestId={passwordResetFormTestIds.passwordResetButton}>
         <div className="pt-1 pr-2">Send Recovery Email</div>

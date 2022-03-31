@@ -21,8 +21,6 @@ describe('BackButton', () => {
     const backButton = screen.getByTestId(backButtonTestIds.button);
     fireEvent.click(backButton);
 
-    expect(backButton).toBeVisible();
-
     expect(mockRouter.back).toHaveBeenCalledTimes(1);
   });
 });
