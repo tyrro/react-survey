@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import Input from '.';
 
 describe('Input', () => {
-  it('renders a input box', () => {
+  it('renders an input box', () => {
     const props = {
       id: 'email',
       type: 'email',

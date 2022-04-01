@@ -8,7 +8,7 @@ export const SIZE_CLASSES = {
   huge: 'w-176 h-14',
 };
 
-const Button = ({ size, dark, children, ...attributes }) => {
+const Button = ({ size, dark = false, children, ...attributes }) => {
   const sizeClass = SIZE_CLASSES[size];
   const backgroundClass = dark ? 'bg-dark' : 'bg-white';
 
@@ -21,7 +21,7 @@ const Button = ({ size, dark, children, ...attributes }) => {
 
 Button.propTypes = {
   size: PropTypes.oneOf(['xs', 'small', 'medium', 'large', 'huge']).isRequired,
-  dark: PropTypes.bool.isRequired,
+  dark: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 

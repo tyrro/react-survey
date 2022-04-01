@@ -21,7 +21,7 @@ const PasswordResetForm = () => {
         </label>
         <Input id="email" type="email" data-test-id={passwordResetFormTestIds.emailField} required />
       </div>
-      <Button type="submit" size="large" dark={false} data-test-id={passwordResetFormTestIds.passwordResetButton}>
+      <Button type="submit" size="large" data-test-id={passwordResetFormTestIds.passwordResetButton}>
         <div className="pt-1 pr-2">Send Recovery Email</div>
       </Button>
     </form>

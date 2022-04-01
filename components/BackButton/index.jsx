@@ -11,7 +11,7 @@ const BackButton = () => {
   const router = useRouter();
 
   return (
-    <div className="cursor-pointer" data-test-id={backButtonTestIds.button} onClick={() => router.back()}>
+    <div className="w-7 h-[30px] cursor-pointer" data-test-id={backButtonTestIds.button} onClick={() => router.back()}>
       <Image src={backButton} alt="back" />
     </div>
   );
