@@ -1,15 +1,18 @@
 import Link from 'next/link';
 
+import Button from '@/components/Button';
+import Input from '@/components/Input';
+
 export const loginFormTestIds = {
   form: 'login-form',
-  emailLabel: 'email',
-  emailField: 'input-email',
-  passwordLabel: 'password',
-  passwordField: 'input-password',
-  loginButton: 'btn-login',
+  emailLabel: 'login-form__email',
+  emailField: 'login-form__input-email',
+  passwordLabel: 'login-form__password',
+  passwordField: 'login-form__input-password',
+  loginButton: 'login-form__button',
 };
 
-const Login = () => {
+const LoginForm = () => {
   return (
     <form className="w-full" data-test-id={loginFormTestIds.form}>
       <div className="mb-6">
@@ -20,13 +23,7 @@ const Login = () => {
         >
           Email
         </label>
-        <input
-          className="w-full h-14 bg-white/20 text-white text-base-large rounded-xl px-3 py-1.5 focus:outline-none focus:shadow-none"
-          id="email"
-          data-test-id={loginFormTestIds.emailField}
-          type="email"
-          required
-        />
+        <Input id="email" type="email" data-test-id={loginFormTestIds.emailField} required />
       </div>
       <div className="relative mb-6">
         <label
@@ -36,26 +33,16 @@ const Login = () => {
         >
           Password
         </label>
-        <input
-          className="w-full h-14 bg-white/20 text-white text-base-large rounded-xl px-3 py-1.5 pr-[23%] focus:outline-none focus:shadow-none"
-          id="password"
-          data-test-id={loginFormTestIds.passwordField}
-          type="password"
-          required
-        />
+        <Input id="password" type="password" data-test-id={loginFormTestIds.passwordField} required className="pr-[23%]" />
         <Link href="/reset-password">
-          <a className="absolute text-white/50 text-base-small right-3 bottom-[18px]">Forgot?</a>
+          <a className="absolute text-white/50 text-base-small right-3 bottom-4">Forgot?</a>
         </Link>
       </div>
-      <button
-        className="w-full h-14 bg-white text-base-large font-extrabold rounded-xl"
-        data-test-id={loginFormTestIds.loginButton}
-        type="submit"
-      >
+      <Button type="submit" size="medium" data-test-id={loginFormTestIds.loginButton}>
         Sign in
-      </button>
+      </Button>
     </form>
   );
 };
 
-export default Login;
+export default LoginForm;

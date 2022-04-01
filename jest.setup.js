@@ -9,3 +9,8 @@ jest.mock('next/image', () => ({
     return 'Next image stub';
   },
 }));
+
+jest.mock('next/router', () => ({
+  __esModule: true,
+  useRouter: jest.fn(),
+}));

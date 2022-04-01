@@ -1,9 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import Login, { loginFormTestIds } from '.';
 
-describe('Login', () => {
+import LoginForm, { loginFormTestIds } from '.';
+
+describe('LoginForm', () => {
   beforeEach(() => {
-    render(<Login />);
+    render(<LoginForm />);
   });
 
   it('renders an email label', () => {
