@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import useUser from 'lib/useUser';
-import fetchJson from 'lib/fetchJson';
+import { clearToken } from 'helpers/authentication';
 
 const Sidebar = ({ name }) => {
   const { mutateUser } = useUser({
@@ -10,12 +10,7 @@ const Sidebar = ({ name }) => {
 
   const handleOnClick = async event => {
     event.preventDefault();
-
-    try {
-      mutateUser(await fetchJson('/api/logout', { method: 'POST' }));
-    } catch (error) {
-      console.error('An unexpected error happened:', error);
-    }
+    mutateUser(clearToken());
   };
 
   return (
