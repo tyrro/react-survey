@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 
 export const backgroundTestIds = {
   foregroundChildren: 'foreground-children',
@@ -13,6 +14,11 @@ const Background = ({ imagePath, children }) => {
       </div>
     </div>
   );
+};
+
+Background.propTypes = {
+  imagePath: PropTypes.string.isRequired,
+  children: PropTypes.node,
 };
 
 export default Background;
