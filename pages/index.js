@@ -26,9 +26,11 @@ export default function Home() {
 
       <main>
         <Background imagePath="/background.png">
-          <div className="h-full">
-            <Header {...profile} />
-          </div>
+          {profile && (
+            <div className="h-full">
+              <Header {...profile} />
+            </div>
+          )}
         </Background>
       </main>
     </>
