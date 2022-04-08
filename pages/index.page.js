@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import styles from '@/styles/Home.module.scss';
 
-import useUser from 'lib/useUser';
+import useUser from 'hooks/useUser';
 
 export default function Home() {
   const { user } = useUser({
