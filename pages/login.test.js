@@ -9,6 +9,7 @@ describe('Login', () => {
     await act(async () => {
       render(<Login />);
     });
+
     const headlineText = screen.getByTestId(loginPageTestIds.headlineText);
 
     expect(headlineText).toBeVisible();
@@ -19,6 +20,7 @@ describe('Login', () => {
     await act(async () => {
       render(<Login />);
     });
+
     const logInForm = screen.getByTestId(loginFormTestIds.form);
 
     expect(logInForm).toBeVisible();

@@ -85,13 +85,11 @@ describe('LoginForm', () => {
   });
 
   describe('given the login button is clicked', () => {
-    const mockLogin = jest.fn();
     const tokenType = 'token type';
     const successResponse = { data: { attributes: { tokenType } } };
 
     it('calls login adapter', async () => {
-      authenticationAdapter.login = mockLogin;
-      mockLogin.mockResolvedValue(successResponse);
+      const loginSpy = jest.spyOn(authenticationAdapter, 'login').mockResolvedValue(successResponse);
 
       await act(async () => {
         render(<LoginForm />);
@@ -101,7 +99,7 @@ describe('LoginForm', () => {
       typePassword();
       clickLoginButton();
 
-      expect(mockLogin).toBeCalledWith(email, password);
+      expect(loginSpy).toBeCalledWith(email, password);
     });
   });
 });

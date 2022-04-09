@@ -1,7 +1,9 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { useRouter } from 'next/router';
 
 import BackButton, { backButtonTestIds } from '.';
+
+jest.mock('next/router');
 
 describe('BackButton', () => {
   it('renders a back button', () => {
@@ -13,14 +15,14 @@ describe('BackButton', () => {
   });
 
   it('routes to the previous page upon click', () => {
-    const mockRouter = { back: jest.fn() };
-    useRouter.mockReturnValue(mockRouter);
+    const mockBackButton = jest.fn();
+    useRouter.mockReturnValue({ back: mockBackButton });
 
     render(<BackButton />);
 
     const backButton = screen.getByTestId(backButtonTestIds.button);
-    fireEvent.click(backButton);
+    backButton.click();
 
-    expect(mockRouter.back).toHaveBeenCalledTimes(1);
+    expect(mockBackButton).toHaveBeenCalledTimes(1);
   });
 });
