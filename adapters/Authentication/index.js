@@ -2,20 +2,23 @@ import baseAdapter from 'adapters/Base';
 import { Config } from 'config';
 
 const AuthenticationAdapter = () => {
+  const DEFAULT_PAYLOAD = () => ({
+    clientId: Config.clientId,
+    clientSecret: Config.clientSecret,
+  });
+
   const login = (email, password) =>
     baseAdapter.post('oauth/token', {
+      ...DEFAULT_PAYLOAD(),
       grantType: 'password',
-      clientId: Config.clientId,
-      clientSecret: Config.clientSecret,
       email,
       password,
     });
 
   const refreshToken = token =>
     baseAdapter.post('oauth/token', {
+      ...DEFAULT_PAYLOAD(),
       grantType: 'refresh_token',
-      clientId: Config.clientId,
-      clientSecret: Config.clientSecret,
       refreshToken: token,
     });
 
