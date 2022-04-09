@@ -10,8 +10,6 @@ export default function Home() {
     redirectTo: '/login',
   });
 
-  const profile = useProfile(user);
-
   if (!user || !user.isLoggedIn) {
     return <div>Loading</div>;
   }
@@ -26,11 +24,9 @@ export default function Home() {
 
       <main>
         <Background imagePath="/background.png">
-          {profile && (
-            <div className="h-full">
-              <Header {...profile} />
-            </div>
-          )}
+          <div className="h-full">
+            <Header />
+          </div>
         </Background>
       </main>
     </>

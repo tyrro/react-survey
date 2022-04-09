@@ -1,9 +1,9 @@
 import baseAdapter from 'adapters/Base';
 
 const ProfileAdapter = () => {
-  const fetchUser = authenticatedHeader =>
+  const fetchUser = authorizationHeader =>
     baseAdapter.get('me', {
-      headers: authenticatedHeader,
+      headers: authorizationHeader,
     });
 
   return {
