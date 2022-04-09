@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Alert from '@/components/Alert';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
-
 import errorIcon from '@/public/circle-exclamation.svg';
 
 import authenticationAdapter from 'adapters/Authentication';
@@ -56,7 +55,7 @@ const LoginForm = () => {
           <Alert icon={errorIcon} title={SUCCESS_TITLE} description={SUCCESS_DESCRIPTION} />
         </div>
       )}
-      <form className="w-full" data-test-id={loginFormTestIds.form} onSubmit={() => handleSubmit(event)}>
+      <form className="w-full" data-test-id={loginFormTestIds.form} onSubmit={handleSubmit}>
         <div className="mb-6">
           <label
             className="block text-white text-base-small font-extrabold mb-2"

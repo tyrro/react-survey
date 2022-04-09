@@ -1,6 +1,5 @@
-/* eslint-disable camelcase */
+/* eslint camelcase: ["error", {allow: ["camel_case_key"]}] */
 import httpClient from 'lib/httpClient';
-
 import baseAdapter from '.';
 
 jest.mock('lib/httpClient');

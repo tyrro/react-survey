@@ -1,6 +1,5 @@
 import baseAdapter from 'adapters/Base';
 import { Config } from 'config';
-
 import authenticationAdapter from '.';
 
 jest.mock('adapters/Base');

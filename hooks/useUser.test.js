@@ -1,20 +1,13 @@
-import React from 'react';
-
-import { render, screen } from '@testing-library/react';
+import { SWRConfig } from 'swr';
+import { renderHook } from '@testing-library/react-hooks';
 
 import { getToken } from 'helpers/authentication';
-
 import useUser from './useUser';
-import { act } from 'react-dom/test-utils';
 
 jest.mock('helpers/authentication');
 
 describe('useUser', () => {
-  const testId = 'is-logged-in-test-id';
-  const UseAuthenticationComponent = () => {
-    const { user } = useUser({});
-    return <div data-test-id={testId}>{user?.isLoggedIn && 'logged in'}</div>;
-  };
+  const wrapper = ({ children }) => <SWRConfig value={{ provider: () => new Map() }}>{children}</SWRConfig>;
 
   const mockTokens = {
     tokenType: '',
@@ -31,13 +24,30 @@ describe('useUser', () => {
       mockTokens.accessToken = 'access token';
     });
 
-    it('returns the logged in message', async () => {
-      await act(async () => {
-        render(<UseAuthenticationComponent />);
-      });
+    it('returns the logged status as true', async () => {
+      const user = { isLoggedIn: true };
 
-      const testComponent = screen.getByTestId(testId);
-      expect(testComponent).toHaveTextContent('logged in');
+      const { result, waitForNextUpdate } = renderHook(() => useUser({}), { wrapper });
+
+      await waitForNextUpdate();
+
+      expect(result.current.user).toMatchObject(user);
+    });
+  });
+
+  describe('given NO token in local storage', () => {
+    beforeEach(() => {
+      mockTokens.accessToken = '';
+    });
+
+    it('returns the logged in status as false', async () => {
+      const user = { isLoggedIn: false };
+
+      const { result, waitForNextUpdate } = renderHook(() => useUser({}), { wrapper });
+
+      await waitForNextUpdate();
+
+      expect(result.current.user).toMatchObject(user);
     });
   });
 });
