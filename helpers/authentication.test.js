@@ -54,6 +54,8 @@ describe('Authentication helper', () => {
       setToken(mockTokenType, mockAccessToken, mockRefreshToken);
 
       expect(setItemSpy).toBeCalledWith(authTokenKey, JSON.stringify(mockTokens));
+
+      setItemSpy.mockRestore();
     });
   });
 
@@ -73,6 +75,8 @@ describe('Authentication helper', () => {
       clearToken();
 
       expect(removeItemSpy).toBeCalledWith(authTokenKey);
+
+      removeItemSpy.mockRestore();
     });
   });
 });
