@@ -100,6 +100,8 @@ describe('LoginForm', () => {
       clickLoginButton();
 
       expect(loginSpy).toBeCalledWith(email, password);
+
+      loginSpy.mockRestore();
     });
   });
 });
