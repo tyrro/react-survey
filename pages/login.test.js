@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import { loginFormTestIds } from '@/components/forms/Login';
-import Login, { loginPageTestIds } from './login';
+import Login, { loginPageTestIds } from './login.page';
 
 describe('Login', () => {
   beforeEach(() => {
