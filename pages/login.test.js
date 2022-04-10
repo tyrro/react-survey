@@ -1,28 +1,27 @@
-import { render, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import { loginFormTestIds } from '@/components/forms/Login';
 import Login, { loginPageTestIds } from './login.page';
 
 describe('Login', () => {
   it('renders a login headline', async () => {
-    await act(async () => {
-      render(<Login />);
+    render(<Login />);
+
+    await waitFor(() => {
+      const headlineText = screen.getByTestId(loginPageTestIds.headlineText);
+
+      expect(headlineText).toBeVisible();
+      expect(headlineText).toHaveTextContent('Sign in to Nimble');
     });
-
-    const headlineText = screen.getByTestId(loginPageTestIds.headlineText);
-
-    expect(headlineText).toBeVisible();
-    expect(headlineText).toHaveTextContent('Sign in to Nimble');
   });
 
   it('renders a login form', async () => {
-    await act(async () => {
-      render(<Login />);
+    render(<Login />);
+
+    await waitFor(() => {
+      const logInForm = screen.getByTestId(loginFormTestIds.form);
+
+      expect(logInForm).toBeVisible();
     });
-
-    const logInForm = screen.getByTestId(loginFormTestIds.form);
-
-    expect(logInForm).toBeVisible();
   });
 });
