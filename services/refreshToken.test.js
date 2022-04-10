@@ -22,7 +22,7 @@ describe('refreshToken', () => {
   const mockInvalidError = mockAxiosError(422);
 
   describe('given the refresh token is valid', () => {
-    it('sets the tokens', async () => {
+    it('sets the tokens', async() => {
       const authenticationAdapterSpy = jest.spyOn(authenticationAdapter, 'refreshToken').mockResolvedValue(successResponse);
       const token = 'valid refresh token';
 
@@ -55,7 +55,7 @@ describe('refreshToken', () => {
       window.location = location;
     });
 
-    it('clears the token', async () => {
+    it('clears the token', async() => {
       const authenticationAdapterSpy = jest.spyOn(authenticationAdapter, 'refreshToken').mockRejectedValue(mockInvalidError);
       const clearTokenSpy = jest.spyOn(authenticationHelper, 'clearToken');
 
@@ -67,7 +67,7 @@ describe('refreshToken', () => {
       clearTokenSpy.mockRestore();
     });
 
-    it('redirects to the login screen', async () => {
+    it('redirects to the login screen', async() => {
       const authenticationAdapterSpy = jest.spyOn(authenticationAdapter, 'refreshToken').mockRejectedValue(mockInvalidError);
 
       await refreshToken('invalid refresh token');

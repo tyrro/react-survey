@@ -77,7 +77,7 @@ describe('LoginForm', () => {
     const tokenType = 'token type';
     const successResponse = { data: { attributes: { tokenType } } };
 
-    it('calls login adapter', async () => {
+    it('calls login adapter', async() => {
       const loginSpy = jest.spyOn(authenticationAdapter, 'login').mockResolvedValue(successResponse);
 
       typeEmail();

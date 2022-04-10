@@ -4,7 +4,7 @@ import { loginFormTestIds } from '@/components/forms/Login';
 import Login, { loginPageTestIds } from './login.page';
 
 describe('Login', () => {
-  it('renders a login headline', async () => {
+  it('renders a login headline', async() => {
     render(<Login />);
 
     await waitFor(() => {
@@ -15,7 +15,7 @@ describe('Login', () => {
     });
   });
 
-  it('renders a login form', async () => {
+  it('renders a login form', async() => {
     render(<Login />);
 
     await waitFor(() => {

@@ -24,7 +24,7 @@ describe('useUser', () => {
       mockTokens.accessToken = 'access token';
     });
 
-    it('returns the logged status as true', async () => {
+    it('returns the logged status as true', async() => {
       const user = { isLoggedIn: true };
 
       const { result, waitForNextUpdate } = renderHook(() => useUser({}), { wrapper });
@@ -40,7 +40,7 @@ describe('useUser', () => {
       mockTokens.accessToken = '';
     });
 
-    it('returns the logged in status as false', async () => {
+    it('returns the logged in status as false', async() => {
       const user = { isLoggedIn: false };
 
       const { result, waitForNextUpdate } = renderHook(() => useUser({}), { wrapper });

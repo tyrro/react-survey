@@ -56,7 +56,7 @@ describe('PasswordResetForm', () => {
       },
     };
 
-    it('calls resetPassword adapter', async () => {
+    it('calls resetPassword adapter', async() => {
       const resetPasswordSpy = jest.spyOn(authenticationAdapter, 'resetPassword').mockResolvedValue(successResponse);
 
       typeEmail();
@@ -69,7 +69,7 @@ describe('PasswordResetForm', () => {
       resetPasswordSpy.mockRestore();
     });
 
-    it('notifies user about a password reset email', async () => {
+    it('notifies user about a password reset email', async() => {
       jest.spyOn(authenticationAdapter, 'resetPassword').mockResolvedValue(successResponse);
 
       typeEmail();
