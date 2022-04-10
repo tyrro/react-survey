@@ -61,4 +61,29 @@ describe('AuthenticationAdapter', () => {
       });
     });
   });
+
+  describe('resetPassword', () => {
+    describe('given an email', () => {
+      it('calls the post method from base adapter', () => {
+        baseAdapter.post = mockPostMethod;
+
+        const email = 'john@doe.io';
+        const clientId = 'client id';
+        const clientSecret = 'client secret';
+        Config.clientId = clientId;
+        Config.clientSecret = clientSecret;
+
+        const expectedPath = 'passwords';
+        const expectedPayload = {
+          clientId,
+          clientSecret,
+          user: { email },
+        };
+
+        authenticationAdapter.resetPassword(email);
+
+        expect(mockPostMethod).toHaveBeenCalledWith(expectedPath, expectedPayload);
+      });
+    });
+  });
 });

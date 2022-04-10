@@ -22,9 +22,16 @@ const AuthenticationAdapter = () => {
       refreshToken: token,
     });
 
+  const resetPassword = email =>
+    baseAdapter.post('passwords', {
+      ...DEFAULT_PAYLOAD(),
+      user: { email },
+    });
+
   return {
     login,
     refreshToken,
+    resetPassword,
   };
 };
 
