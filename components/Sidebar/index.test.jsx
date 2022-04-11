@@ -7,6 +7,7 @@ import * as authenticationHelper from 'helpers/authentication';
 
 jest.mock('hooks/useUser');
 const mutateMock = jest.fn();
+
 const mockUseUser = {
   mutateUser: mutateMock,
 };
