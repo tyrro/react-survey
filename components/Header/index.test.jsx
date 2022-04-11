@@ -40,13 +40,15 @@ describe('Header', () => {
     expect(sidebar).toBeNull();
   });
 
-  it('renders sidebar when clicked on the avatar', () => {
-    const userAvatar = screen.getByTestId(headerTestIds.userAvatar);
+  describe('given the avatar is clicked', () => {
+    it('renders the sidebar', () => {
+      const userAvatar = screen.getByTestId(headerTestIds.userAvatar);
 
-    userAvatar.click();
+      userAvatar.click();
 
-    const sidebar = screen.getByTestId(sidebarTestIds.base);
+      const sidebar = screen.getByTestId(sidebarTestIds.base);
 
-    expect(sidebar).toBeVisible();
+      expect(sidebar).toBeVisible();
+    });
   });
 });

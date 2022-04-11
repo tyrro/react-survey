@@ -15,7 +15,7 @@ export const headerTestIds = {
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const { user } = useUser({});
+  const { user } = useUser();
   const profile = useProfile(user);
 
   if (!profile) {
@@ -32,7 +32,7 @@ const Header = () => {
         onClick={() => setIsSidebarOpen(value => !value)}
         data-test-id={headerTestIds.userAvatar}
       >
-        <Image src={profile.avatarUrl} alt="profile avatar" layout="fixed" width={36} height={36} />
+        <Image className="rounded-full" src={profile.avatarUrl} alt="profile avatar" layout="fixed" width={36} height={36} />
       </div>
       {isSidebarOpen && <Sidebar name={profile.name} />}
     </div>

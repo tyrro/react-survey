@@ -17,6 +17,7 @@ const Sidebar = ({ name }) => {
 
   const handleOnClick = async event => {
     event.preventDefault();
+
     clearToken();
     mutateUser();
   };
@@ -26,15 +27,17 @@ const Sidebar = ({ name }) => {
       className="fixed bg-sidebar backdrop-blur-4xl right-0 w-[264px] pl-8 pt-8 pr-8 h-full"
       data-test-id={sidebarTestIds.base}
     >
-      <div className="text-white text-base-xxl font-extrabold mb-[22px]" data-test-id={sidebarTestIds.userName}>
+      <div className="text-white text-base-xxl font-extrabold h-9 pt-2 mb-5" data-test-id={sidebarTestIds.userName}>
         {name}
       </div>
-      <hr className="border-solid rounded-[0.5px] border-white/20 mb-[35px]" />
-      <Link href="/logout">
-        <a className="text-white/50 text-base-xl" onClick={handleOnClick} data-test-id={sidebarTestIds.button}>
-          Logout
-        </a>
-      </Link>
+      <hr className="border-solid rounded-[0.5px] border-white/20 mb-5" />
+      <div className="h-14 flex items-center text-white/50 text-base-xl">
+        <Link href="/login">
+          <a onClick={handleOnClick} data-test-id={sidebarTestIds.button}>
+            Logout
+          </a>
+        </Link>
+      </div>
     </div>
   );
 };

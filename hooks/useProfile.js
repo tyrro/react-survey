@@ -9,6 +9,7 @@ const fetcher = async () => {
   } = await profileAdapter.fetchUser(authorizationHeader());
 
   const { name, avatarUrl } = attributes;
+
   return { name, avatarUrl };
 };
 

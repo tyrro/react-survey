@@ -32,6 +32,7 @@ describe('Sidebar', () => {
     const logoutButton = screen.getByTestId(sidebarTestIds.button);
 
     expect(logoutButton).toBeVisible();
+    expect(logoutButton).toHaveTextContent('Logout');
   });
 
   describe('upon logout button click', () => {
