@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import { passwordResetFormTestIds } from '@/components/forms/PasswordReset';
-import PasswordReset, { passwordResetPageTestIds } from './reset-password';
+import PasswordReset, { passwordResetPageTestIds } from './reset-password.page';
 
 describe('PasswordReset', () => {
   beforeEach(() => {

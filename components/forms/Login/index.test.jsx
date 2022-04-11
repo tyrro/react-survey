@@ -1,9 +1,12 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import LoginForm, { loginFormTestIds } from '.';
 
 import authenticationAdapter from 'adapters/Authentication';
+import useUser from 'hooks/useUser';
+
+jest.mock('hooks/useUser');
+const mutateUserMock = jest.fn();
 
 describe('LoginForm', () => {
   const email = 'john@doe.io';
@@ -28,55 +31,41 @@ describe('LoginForm', () => {
     loginButton.click();
   };
 
-  it('renders an email label', async () => {
-    await act(async () => {
-      render(<LoginForm />);
-    });
+  beforeEach(() => {
+    useUser.mockImplementation(() => ({ mutateUser: mutateUserMock }));
 
+    render(<LoginForm />);
+  });
+
+  it('renders an email label', () => {
     const emailLabel = screen.getByTestId(loginFormTestIds.emailLabel);
 
     expect(emailLabel).toBeVisible();
     expect(emailLabel).toHaveTextContent('Email');
   });
 
-  it('renders an email input field', async () => {
-    await act(async () => {
-      render(<LoginForm />);
-    });
-
+  it('renders an email input field', () => {
     const emailInput = screen.getByTestId(loginFormTestIds.emailField);
 
     expect(emailInput).toBeVisible();
     expect(emailInput).toHaveAttribute('type', 'email');
   });
 
-  it('renders a password field', async () => {
-    await act(async () => {
-      render(<LoginForm />);
-    });
-
+  it('renders a password field', () => {
     const passwordLabel = screen.getByTestId(loginFormTestIds.passwordLabel);
 
     expect(passwordLabel).toBeVisible();
     expect(passwordLabel).toHaveTextContent('Password');
   });
 
-  it('renders a password input field', async () => {
-    await act(async () => {
-      render(<LoginForm />);
-    });
-
+  it('renders a password input field', () => {
     const passwordInput = screen.getByTestId(loginFormTestIds.passwordField);
 
     expect(passwordInput).toBeVisible();
     expect(passwordInput).toHaveAttribute('type', 'password');
   });
 
-  it('renders a login button', async () => {
-    await act(async () => {
-      render(<LoginForm />);
-    });
-
+  it('renders a login button', () => {
     const loginButton = screen.getByTestId(loginFormTestIds.loginButton);
 
     expect(loginButton).toBeVisible();
@@ -91,15 +80,14 @@ describe('LoginForm', () => {
     it('calls login adapter', async () => {
       const loginSpy = jest.spyOn(authenticationAdapter, 'login').mockResolvedValue(successResponse);
 
-      await act(async () => {
-        render(<LoginForm />);
-      });
-
       typeEmail();
       typePassword();
       clickLoginButton();
 
-      expect(loginSpy).toBeCalledWith(email, password);
+      await waitFor(() => {
+        expect(loginSpy).toBeCalledWith(email, password);
+        expect(mutateUserMock).toBeCalled();
+      });
 
       loginSpy.mockRestore();
     });

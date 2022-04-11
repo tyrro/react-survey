@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images: {
-    domains: ['secure.gravatar.com'],
-  },
+  pageExtensions: ['page.js'],
 };
 
 module.exports = nextConfig;

@@ -1,34 +1,24 @@
 import { render, screen } from '@testing-library/react';
 
-import { headerTestIds } from '@/components/Header';
-import Home from '.';
+import Home from './index.page';
 
 import useUser from 'hooks/useUser';
-import useProfile from 'hooks/useProfile';
 
 jest.mock('hooks/useUser');
-jest.mock('hooks/useProfile');
-
 const mockUseUser = {
   user: {
     isLoggedIn: true,
   },
 };
 
-const mockUseProfile = {
-  name: 'john doe',
-  avatarUrl: 'avatar.me',
-};
-
 describe('Home', () => {
-  it('renders the header', () => {
+  it('renders a heading', () => {
     useUser.mockImplementation(() => mockUseUser);
-    useProfile.mockImplementation(() => mockUseProfile);
-
     render(<Home />);
 
-    const header = screen.getByTestId(headerTestIds.base);
+    const heading = screen.getByTestId('welcome-text');
 
-    expect(header).toBeVisible();
+    expect(heading).toBeVisible();
+    expect(heading).toHaveTextContent('Welcome to Next.js!');
   });
 });
