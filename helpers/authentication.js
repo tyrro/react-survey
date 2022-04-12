@@ -1,24 +1,24 @@
 export const authTokenKey = 'Authentication';
 
 export const getToken = () => {
-  const jsonAuthTokens = localStorage.getItem(authTokenKey);
-  if (!jsonAuthTokens) {
+  const jsonAuthToken = localStorage.getItem(authTokenKey);
+  if (!jsonAuthToken) {
     return;
   }
 
-  const tokens = JSON.parse(jsonAuthTokens);
+  const token = JSON.parse(jsonAuthToken);
 
-  return tokens;
+  return token;
 };
 
 export const setToken = (tokenType, accessToken, refreshToken) => {
-  const tokens = {
+  const token = {
     tokenType,
     accessToken,
     refreshToken,
   };
 
-  localStorage.setItem(authTokenKey, JSON.stringify(tokens));
+  localStorage.setItem(authTokenKey, JSON.stringify(token));
 };
 
 export const clearToken = () => {

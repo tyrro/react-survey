@@ -24,26 +24,26 @@ describe('Authentication helper', () => {
 
   describe('getToken', () => {
     beforeEach(() => {
-      const mockTokens = {
+      const mockToken = {
         tokenType: mockTokenType,
         accessToken: mockAccessToken,
         refreshToken: mockRefreshToken,
       };
-      mockStorage[authTokenKey] = JSON.stringify(mockTokens);
+      mockStorage[authTokenKey] = JSON.stringify(mockToken);
     });
 
-    it('returns the tokens from local storage', () => {
-      const tokens = getToken();
+    it('returns the token from local storage', () => {
+      const token = getToken();
 
-      expect(tokens.tokenType).toEqual(mockTokenType);
-      expect(tokens.accessToken).toEqual(mockAccessToken);
-      expect(tokens.refreshToken).toEqual(mockRefreshToken);
+      expect(token.tokenType).toEqual(mockTokenType);
+      expect(token.accessToken).toEqual(mockAccessToken);
+      expect(token.refreshToken).toEqual(mockRefreshToken);
     });
   });
 
   describe('setToken', () => {
-    it('sets the tokens to local storage', () => {
-      const mockTokens = {
+    it('sets the token to local storage', () => {
+      const mockToken = {
         tokenType: mockTokenType,
         accessToken: mockAccessToken,
         refreshToken: mockRefreshToken,
@@ -53,7 +53,7 @@ describe('Authentication helper', () => {
 
       setToken(mockTokenType, mockAccessToken, mockRefreshToken);
 
-      expect(setItemSpy).toBeCalledWith(authTokenKey, JSON.stringify(mockTokens));
+      expect(setItemSpy).toBeCalledWith(authTokenKey, JSON.stringify(mockToken));
 
       setItemSpy.mockRestore();
     });
@@ -61,15 +61,15 @@ describe('Authentication helper', () => {
 
   describe('clearToken', () => {
     beforeEach(() => {
-      const mockTokens = {
+      const mockToken = {
         tokenType: mockTokenType,
         accessToken: mockAccessToken,
         refreshToken: mockRefreshToken,
       };
-      mockStorage[authTokenKey] = JSON.stringify(mockTokens);
+      mockStorage[authTokenKey] = JSON.stringify(mockToken);
     });
 
-    it('clears the tokens from local storage', () => {
+    it('clears the token from local storage', () => {
       const removeItemSpy = jest.spyOn(window.Storage.prototype, 'removeItem');
 
       clearToken();
