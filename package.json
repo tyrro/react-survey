@@ -12,7 +12,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "test:coverage": "rm -f ./.nyc_output/out.json && yarn test --coverage --watchAll=false && yarn cypress:run && node ./scripts/coverage-merge.js && nyc report",
-    "test:coverage-merge": "node ./scripts/coverage-merge.js"
+    "test:coverage-merge": "node ./scripts/coverage-merge.js && nyc report"
   },
   "nyc": {
     "report-dir": "coverage/cypress",
