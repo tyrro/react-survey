@@ -9,7 +9,7 @@ export const authorizationHeader = () => ({
 
 const BaseAdapter = () => {
   const get = (path, requestOptions = {}) => {
-    requestOptions = snakecaseKeys(requestOptions);
+    requestOptions = snakecaseKeys(requestOptions, { exclude: ['Authorization'] });
 
     return httpClient('get', path, requestOptions);
   };

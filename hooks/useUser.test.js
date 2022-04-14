@@ -9,25 +9,25 @@ jest.mock('helpers/authentication');
 describe('useUser', () => {
   const wrapper = ({ children }) => <SWRConfig value={{ provider: () => new Map() }}>{children}</SWRConfig>;
 
-  const mockTokens = {
+  const mockToken = {
     tokenType: '',
     accessToken: '',
     refreshToken: '',
   };
 
   beforeEach(() => {
-    getToken.mockImplementation(() => mockTokens);
+    getToken.mockImplementation(() => mockToken);
   });
 
   describe('given the token in local storage exists', () => {
     beforeEach(() => {
-      mockTokens.accessToken = 'access token';
+      mockToken.accessToken = 'access token';
     });
 
     it('returns the logged status as true', async () => {
       const user = { isLoggedIn: true };
 
-      const { result, waitForNextUpdate } = renderHook(() => useUser({}), { wrapper });
+      const { result, waitForNextUpdate } = renderHook(() => useUser(), { wrapper });
 
       await waitForNextUpdate();
 
@@ -37,13 +37,13 @@ describe('useUser', () => {
 
   describe('given NO token in local storage', () => {
     beforeEach(() => {
-      mockTokens.accessToken = '';
+      mockToken.accessToken = '';
     });
 
     it('returns the logged in status as false', async () => {
       const user = { isLoggedIn: false };
 
-      const { result, waitForNextUpdate } = renderHook(() => useUser({}), { wrapper });
+      const { result, waitForNextUpdate } = renderHook(() => useUser(), { wrapper });
 
       await waitForNextUpdate();
 

@@ -25,8 +25,8 @@ const LoginForm = () => {
     redirectIfFound: true,
   });
 
-  const SUCCESS_TITLE = 'Login failed';
-  const SUCCESS_DESCRIPTION = 'Check whether you email is registered with us or if your password is correct';
+  const UNSUCCESS_TITLE = 'Login failed';
+  const UNSUCCESS_DESCRIPTION = 'Check whether you email is registered with us or if your password is correct';
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,10 +36,8 @@ const LoginForm = () => {
     event.preventDefault();
 
     try {
-      const {
-        data: { attributes },
-      } = await authenticationAdapter.login(email, password);
-      const { tokenType, accessToken, refreshToken } = attributes;
+      const response = await authenticationAdapter.login(email, password);
+      const { tokenType, accessToken, refreshToken } = response?.data?.attributes;
       setToken(tokenType, accessToken, refreshToken);
       mutateUser();
     } catch (error) {
@@ -52,7 +50,7 @@ const LoginForm = () => {
     <>
       {isLoginUnsuccessful && (
         <div className="mb-6">
-          <Alert icon={errorIcon} title={SUCCESS_TITLE} description={SUCCESS_DESCRIPTION} />
+          <Alert icon={errorIcon} title={UNSUCCESS_TITLE} description={UNSUCCESS_DESCRIPTION} />
         </div>
       )}
       <form className="w-full" data-test-id={loginFormTestIds.form} onSubmit={handleSubmit}>
