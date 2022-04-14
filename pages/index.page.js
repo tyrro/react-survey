@@ -3,7 +3,17 @@ import Image from 'next/image';
 
 import styles from '@/styles/Home.module.scss';
 
+import useUser from 'hooks/useUser';
+
 export default function Home() {
+  const { user } = useUser({
+    redirectTo: '/login',
+  });
+
+  if (!user || !user.isLoggedIn) {
+    return <div>Loading</div>;
+  }
+
   return (
     <div className={styles.container}>
       <Head>
