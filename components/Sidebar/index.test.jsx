@@ -36,7 +36,7 @@ describe('Sidebar', () => {
   });
 
   describe('upon logout button click', () => {
-    it('clears tokens', () => {
+    it('clears token', () => {
       const clearTokenSpy = jest.spyOn(authenticationHelper, 'clearToken');
       const logoutButton = screen.getByTestId(sidebarTestIds.button);
       logoutButton.click();

@@ -4,11 +4,8 @@ import profileAdapter from 'adapters/Profile';
 import { authorizationHeader } from 'adapters/Base';
 
 const fetcher = async () => {
-  const {
-    data: { attributes },
-  } = await profileAdapter.fetchUser(authorizationHeader());
-
-  const { name, avatarUrl } = attributes;
+  const response = await profileAdapter.fetchUser(authorizationHeader());
+  const { name, avatarUrl } = response?.data?.attributes;
 
   return { name, avatarUrl };
 };

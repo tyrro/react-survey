@@ -32,6 +32,7 @@ describe('Header', () => {
     const userAvatar = screen.getByTestId(headerTestIds.userAvatar);
 
     expect(userAvatar).toBeVisible();
+    expect(userAvatar).toHaveTextContent(mockUseProfile.avatarUrl);
   });
 
   it('does not render the sidebar open', () => {
