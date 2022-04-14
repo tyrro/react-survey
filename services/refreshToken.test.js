@@ -22,7 +22,7 @@ describe('refreshToken', () => {
   const mockInvalidError = mockAxiosError(422);
 
   describe('given the refresh token is valid', () => {
-    it('sets the tokens', async () => {
+    it('sets the token', async () => {
       const authenticationAdapterSpy = jest.spyOn(authenticationAdapter, 'refreshToken').mockResolvedValue(successResponse);
       const token = 'valid refresh token';
 

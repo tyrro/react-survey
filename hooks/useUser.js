@@ -20,12 +20,11 @@ export default function useUser({ redirectTo = '', redirectIfFound = false } = {
       return;
     }
 
-    if (
-      // If redirectTo is set, redirect if the user was not found.
-      (redirectTo && !redirectIfFound && !user?.isLoggedIn) ||
-      // If redirectIfFound is also set, redirect if the user was found
-      (redirectIfFound && user?.isLoggedIn)
-    ) {
+    const hasRedirectButNoUser = redirectTo && !redirectIfFound && !user?.isLoggedIn;
+    const hasRedirectIfFoundAndUser = redirectIfFound && user?.isLoggedIn;
+    const isRedirectNeeded = hasRedirectButNoUser || hasRedirectIfFoundAndUser;
+
+    if (isRedirectNeeded) {
       Router.push(redirectTo);
     }
   }, [user, redirectIfFound, redirectTo]);
