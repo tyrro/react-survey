@@ -27,7 +27,7 @@ describe('useUser', () => {
     it('returns the logged status as true', async () => {
       const user = { isLoggedIn: true };
 
-      const { result, waitForNextUpdate } = renderHook(() => useUser({}), { wrapper });
+      const { result, waitForNextUpdate } = renderHook(() => useUser(), { wrapper });
 
       await waitForNextUpdate();
 
@@ -43,7 +43,7 @@ describe('useUser', () => {
     it('returns the logged in status as false', async () => {
       const user = { isLoggedIn: false };
 
-      const { result, waitForNextUpdate } = renderHook(() => useUser({}), { wrapper });
+      const { result, waitForNextUpdate } = renderHook(() => useUser(), { wrapper });
 
       await waitForNextUpdate();
 

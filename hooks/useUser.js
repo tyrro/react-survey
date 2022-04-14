@@ -10,7 +10,7 @@ const fetcher = () => {
   return accessToken ? { isLoggedIn: true } : { isLoggedIn: false };
 };
 
-export default function useUser({ redirectTo = '', redirectIfFound = false }) {
+export default function useUser({ redirectTo = '', redirectIfFound = false } = {}) {
   const { data: user, mutate: mutateUser } = useSWR('user', fetcher);
 
   useEffect(() => {
