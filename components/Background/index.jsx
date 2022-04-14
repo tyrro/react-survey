@@ -7,7 +7,7 @@ export const backgroundTestIds = {
 
 const Background = ({ imagePath, children }) => {
   return (
-    <div className="h-screen w-screen">
+    <div className="relative h-screen w-screen">
       <Image alt="background" src={imagePath} layout="fill" objectFit="cover" quality={100} />
       <div className="h-full backdrop-blur-5xl bg-shadow" data-test-id={backgroundTestIds.foregroundChildren}>
         {children}
