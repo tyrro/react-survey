@@ -1,0 +1,22 @@
+.slickDots {
+  li {
+    button::before,
+    button:focus:before
+     {
+      color: white;
+      opacity: 0.2;
+    }
+
+    button:hover:before {
+      color: white;
+      opacity: 1;
+    }
+  }
+
+  :global li.slick-active {
+    button::before {
+      color: white;
+      opacity: 1;
+    }
+  }
+}
