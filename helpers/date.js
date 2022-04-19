@@ -1,5 +1,4 @@
-export const formatTodaysDate = () => {
-  const date = new Date();
+export const formatDate = date => {
   const dateOptions = { weekday: 'long', month: 'long', day: 'numeric' };
 
   return date.toLocaleString('en-EN', dateOptions).toUpperCase();

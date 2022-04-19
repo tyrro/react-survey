@@ -6,13 +6,20 @@ import SurveyCard from '@/components/survey/Card';
 import useUser from 'hooks/useUser';
 import useSurveys from 'hooks/useSurveys';
 import { sliderSettings } from './sliderSettings';
-import { formatTodaysDate } from 'helpers/date';
+import { formatDate } from 'helpers/date';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './index.module.scss';
 
+export const surveyListTestIds = {
+  base: 'survey-list',
+  date: 'survey-list__date',
+  text: 'survey-list__text',
+};
+
 const SurveyList = ({ setBackgroundImagePath }) => {
+  const date = new Date();
   const { user } = useUser();
   const surveys = useSurveys(user);
 
@@ -28,8 +35,12 @@ const SurveyList = ({ setBackgroundImagePath }) => {
 
   return (
     <div className="w-[704px] mx-auto my-0">
-      <div className="font-extrabold text-white text-base-xs mb-1">{formatTodaysDate()}</div>
-      <div className="font-extrabold text-white text-base-xxxl mb-8">Today</div>
+      <div className="font-extrabold text-white text-base-xs mb-1" data-test-id={surveyListTestIds.date}>
+        {formatDate(date)}
+      </div>
+      <div className="font-extrabold text-white text-base-xxxl mb-8" data-test-id={surveyListTestIds.text}>
+        Today
+      </div>
       <Slider {...sliderConfig}>
         {surveys.map(survey => (
           <SurveyCard
