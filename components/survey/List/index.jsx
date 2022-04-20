@@ -24,11 +24,10 @@ const SurveyList = ({ setBackgroundImagePath }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [slideId, setSlideId] = useState(1);
+
   const date = new Date();
   const { user } = useUser();
-
   const surveyResponse = useSurveys(user, currentPage);
-  console.log(surveyResponse);
 
   useEffect(() => {
     if (typeof surveyResponse !== 'undefined') {
