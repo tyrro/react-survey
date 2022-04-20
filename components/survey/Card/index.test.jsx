@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import SurveyCard, { surveyCardTestIds } from '.';
 
 describe('SurveyCard', () => {
-  const props = { id: 'id', title: 'a survey card', description: 'a nice survey card', coverImageUrl: '/cover.png' };
+  const props = { slideId: 'id', title: 'a survey card', description: 'a nice survey card', coverImageUrl: '/cover.png' };
 
   beforeEach(() => {
     render(<SurveyCard {...props} />);

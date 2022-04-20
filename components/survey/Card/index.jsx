@@ -12,7 +12,7 @@ export const surveyCardTestIds = {
   forwardButton: 'survey-card__forward',
 };
 
-const SurveyCard = ({ id, title, description, coverImageUrl }) => (
+const SurveyCard = ({ slideId, title, description, coverImageUrl }) => (
   <div data-test-id={surveyCardTestIds.base}>
     <div className="w-[704px] h-[302px] mb-8" data-test-id={surveyCardTestIds.coverImageUrl}>
       <Image className="rounded-xl" src={coverImageUrl} alt="cover image" width={704} height={302} />
@@ -27,7 +27,7 @@ const SurveyCard = ({ id, title, description, coverImageUrl }) => (
         </div>
       </div>
       <div className="w-14 h-14" data-test-id={surveyCardTestIds.forwardButton}>
-        <Link href={`/surveys/${id}`}>
+        <Link href={`/surveys/${slideId}`}>
           <a>
             <Image className="cursor-pointer" src={forwardButton} alt="forward" />
           </a>
@@ -38,7 +38,7 @@ const SurveyCard = ({ id, title, description, coverImageUrl }) => (
 );
 
 SurveyCard.propTypes = {
-  id: PropTypes.string.isRequired,
+  slideId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   coverImageUrl: PropTypes.string.isRequired,

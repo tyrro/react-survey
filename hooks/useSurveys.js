@@ -1,30 +1,16 @@
-import { useEffect, useState } from 'react';
+import useSWR from 'swr';
 
 import surveyAdapter from 'adapters/Survey';
 import { authorizationHeader } from 'adapters/Base';
 
-export default function useSurveys(user) {
-  const [surveys, setSurveys] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [totalPages, setTotalPages] = useState(1);
+const fetcher = async (_url, currentPage) => {
+  const response = await surveyAdapter.fetchSurveys(currentPage, authorizationHeader());
 
-  const fetchSurveys = async () => {
-    const response = await surveyAdapter.fetchSurveys(currentPage + 1, authorizationHeader());
-    const newSurveys = [...surveys, ...response.data];
-    setSurveys(newSurveys);
-    setCurrentPage(response.meta.page);
-    setTotalPages(response.meta.pages);
-  };
+  return response;
+};
 
-  useEffect(() => {
-    if (!user?.isLoggedIn) {
-      return;
-    }
-
-    if (currentPage < totalPages) {
-      fetchSurveys();
-    }
-  }, [user, currentPage, totalPages]);
+export default function useSurveys(user, currentPage) {
+  const { data: surveys } = useSWR(user?.isLoggedIn ? ['surveys', currentPage] : null, fetcher);
 
   return surveys;
 }
