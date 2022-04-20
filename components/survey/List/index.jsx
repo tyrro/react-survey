@@ -30,9 +30,10 @@ const SurveyList = ({ setBackgroundImagePath }) => {
   const surveyResponse = useSurveys(user, currentPage);
 
   useEffect(() => {
-    if (typeof surveyResponse !== 'undefined') {
+    if (surveyResponse) {
       const updatedSurveyResponse = [...surveys, ...surveyResponse.data];
       setSurveys(updatedSurveyResponse);
+      setSlideId(surveyResponse.data[0].id);
       setTotalPages(surveyResponse.meta.pages);
     }
   }, [surveyResponse]);

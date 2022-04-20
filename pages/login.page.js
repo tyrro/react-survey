@@ -1,8 +1,6 @@
-import Image from 'next/image';
-
+import Icon from '@/components/Icon';
 import Background from '@/components/Background';
 import LoginForm from '@/components/forms/Login';
-
 import logo from '@/public/logo-large.svg';
 
 export const loginPageTestIds = {
@@ -15,7 +13,7 @@ const Login = () => {
       <div className="h-full w-80 m-auto flex flex-col justify-center items-center">
         <div className="mb-8">
           <div className="h-10 text-center mb-6">
-            <Image src={logo} alt="logo" />
+            <Icon src={logo} alt="logo" />
           </div>
           <p className="text-white/60 text-center text-base-large" data-test-id={loginPageTestIds.headlineText}>
             Sign in to Nimble

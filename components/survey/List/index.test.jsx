@@ -9,16 +9,22 @@ import useSurveys from 'hooks/useSurveys';
 jest.mock('hooks/useUser');
 jest.mock('hooks/useSurveys');
 
-const mockUseSurveys = [
-  {
-    id: 'id',
-    attributes: {
-      title: 'a survey card',
-      description: 'a nice survey card',
-      coverImageUrl: '/cover.png',
+const mockUseSurveys = {
+  data: [
+    {
+      id: 'id',
+      attributes: {
+        title: 'a survey card',
+        description: 'a nice survey card',
+        coverImageUrl: '/cover.png',
+      },
     },
+  ],
+  meta: {
+    page: 1,
+    pages: 1,
   },
-];
+};
 
 const props = {
   setBackgroundImagePath: jest.fn(),
