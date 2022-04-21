@@ -23,7 +23,7 @@ const SurveyList = ({ setBackgroundImagePath }) => {
   const [surveys, setSurveys] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [slideId, setSlideId] = useState(1);
+  const [slideId, setSlideId] = useState();
 
   const date = new Date();
   const { user } = useUser();
