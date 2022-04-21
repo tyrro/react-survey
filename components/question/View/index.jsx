@@ -23,9 +23,6 @@ const Question = ({ setBackgroundImagePath }) => {
     return null;
   }
 
-  const questions = prepareQuestions(survey);
-  const surveyQuestions = questions.filter(question => question.type !== 'intro' && question.type !== 'outro');
-
   return <div>Hello World</div>;
 };
 
