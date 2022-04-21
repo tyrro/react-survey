@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import useUser from 'hooks/useUser';
 import useSurvey from 'hooks/useSurvey';
 
-const Question = ({ setBackgroundImagePath }) => {
+const QuestionDetails = ({ setBackgroundImagePath }) => {
   const router = useRouter();
   const { id } = router.query;
   const { user } = useUser();
@@ -24,8 +24,8 @@ const Question = ({ setBackgroundImagePath }) => {
   return <div>Hello World</div>;
 };
 
-Question.propTypes = {
+QuestionDetails.propTypes = {
   setBackgroundImagePath: PropTypes.func.isRequired,
 };
 
-export default Question;
+export default QuestionDetails;

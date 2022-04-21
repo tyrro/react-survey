@@ -10,7 +10,7 @@ import useUser from 'hooks/useUser';
 import useSurvey from 'hooks/useSurvey';
 import { prepareQuestions } from './prepareQuestions';
 
-export const surveyTestIds = {
+export const surveyOverviewTestIds = {
   base: 'survey-overview',
   coverImageUrl: 'survey-overview__cover_image_url',
   title: 'survey-overview__title',
@@ -18,7 +18,7 @@ export const surveyTestIds = {
   startSurveyButton: 'survey-overview__start-survey',
 };
 
-const Survey = ({ setBackgroundImagePath }) => {
+const SurveyOverview = ({ setBackgroundImagePath }) => {
   const router = useRouter();
   const { id } = router.query;
   const { user } = useUser();
@@ -39,19 +39,19 @@ const Survey = ({ setBackgroundImagePath }) => {
   const introText = questions.find(question => question.type === 'intro').text;
 
   return (
-    <div className="w-[704px] m-auto" data-test-id={surveyTestIds.base}>
-      <div className="w-[704px] h-[302px] mb-8" data-test-id={surveyTestIds.coverImageUrl}>
+    <div className="w-[704px] m-auto" data-test-id={surveyOverviewTestIds.base}>
+      <div className="w-[704px] h-[302px] mb-8" data-test-id={surveyOverviewTestIds.coverImageUrl}>
         <Icon className="rounded-xl" src={coverImageUrl} alt="cover image" width={704} height={302} />
       </div>
-      <div className="font-extrabold text-white text-base-xxxl mb-2" data-test-id={surveyTestIds.title}>
+      <div className="font-extrabold text-white text-base-xxxl mb-2" data-test-id={surveyOverviewTestIds.title}>
         {title}
       </div>
-      <div className="text-white/70 text-base-large mb-8" data-test-id={surveyTestIds.introText}>
+      <div className="text-white/70 text-base-large mb-8" data-test-id={surveyOverviewTestIds.introText}>
         {introText}
       </div>
       <Link href={`/surveys/${id}/questions`}>
         <a>
-          <Button type="button" size="huge" data-test-id={surveyTestIds.startSurveyButton}>
+          <Button type="button" size="huge" data-test-id={surveyOverviewTestIds.startSurveyButton}>
             <div className="pt-1 pr-2">Start Survey</div>
           </Button>
         </a>
@@ -60,8 +60,8 @@ const Survey = ({ setBackgroundImagePath }) => {
   );
 };
 
-Survey.propTypes = {
+SurveyOverview.propTypes = {
   setBackgroundImagePath: PropTypes.func.isRequired,
 };
 
-export default Survey;
+export default SurveyOverview;

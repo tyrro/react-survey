@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import Background from '@/components/Background';
-import QuestionView from '@/components/question/View';
+import QuestionDetails from '@/components/question/Details';
 
 import useUser from 'hooks/useUser';
 
@@ -19,7 +19,7 @@ const Questions = () => {
   return (
     <Background imagePath={backgroundImagePath}>
       <div className="h-full">
-        <QuestionView setBackgroundImagePath={setBackgroundImagePath} />
+        <QuestionDetails setBackgroundImagePath={setBackgroundImagePath} />
       </div>
     </Background>
   );
