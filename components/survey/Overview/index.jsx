@@ -39,7 +39,10 @@ const SurveyOverview = ({ setBackgroundImagePath }) => {
   const introText = questions.find(question => question.type === 'intro').text;
 
   return (
-    <div className="w-[704px] m-auto" data-test-id={surveyOverviewTestIds.base}>
+    <div
+      className="w-[704px] absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4"
+      data-test-id={surveyOverviewTestIds.base}
+    >
       <div className="w-[704px] h-[302px] mb-8" data-test-id={surveyOverviewTestIds.coverImageUrl}>
         <Icon className="rounded-xl" src={coverImageUrl} alt="cover image" width={704} height={302} />
       </div>

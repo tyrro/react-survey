@@ -20,7 +20,7 @@ const Survey = () => {
   return (
     <Background imagePath={backgroundImagePath}>
       <div className="h-full">
-        <div className="pl-8 pt-8 mb-[98px]">
+        <div className="pl-8 pt-8">
           <BackButton />
         </div>
         <SurveyOverview setBackgroundImagePath={setBackgroundImagePath} />
