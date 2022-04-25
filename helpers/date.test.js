@@ -5,7 +5,7 @@ describe('Date helper', () => {
     it('returns formatted date', () => {
       const date = new Date('19 April 2022');
 
-      expect(formatDate(date)).toEqual('TUESDAY, APRIL 19');
+      expect(formatDate(date)).toEqual('Tuesday, April 19');
     });
   });
 });
