@@ -15,7 +15,7 @@ const QuestionDetails = ({ setBackgroundImagePath }) => {
     if (survey) {
       setBackgroundImagePath(survey.data.attributes.coverImageUrl);
     }
-  });
+  }, [survey, setBackgroundImagePath]);
 
   if (!survey) {
     return null;

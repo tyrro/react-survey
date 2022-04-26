@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import Background from '@/components/Background';
-import SurveyOverview from '@/components/survey/Overview';
+import SurveyDetails from '@/components/survey/Details';
 
 import useUser from 'hooks/useUser';
 import BackButton from '@/components/BackButton';
@@ -23,7 +23,7 @@ const Survey = () => {
         <div className="pl-8 pt-8">
           <BackButton />
         </div>
-        <SurveyOverview setBackgroundImagePath={setBackgroundImagePath} />
+        <SurveyDetails setBackgroundImagePath={setBackgroundImagePath} />
       </div>
     </Background>
   );

@@ -1,9 +1,9 @@
-export const prepareQuestions = surveyResponse => {
-  let questions = surveyResponse.data.relationships.questions.data;
-  const included = surveyResponse.included;
+export const getQuestionsFromSurvey = survey => {
+  let questions = survey.data.relationships.questions.data;
+  const included = survey.included;
 
   questions.forEach(question => {
-    const questionDetails = included.find(surveyResponse => surveyResponse.id === question.id);
+    const questionDetails = included.find(survey => survey.id === question.id);
 
     question['type'] = questionDetails.attributes.displayType;
     question['pick'] = questionDetails.attributes.pick;
