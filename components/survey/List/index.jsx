@@ -7,6 +7,7 @@ import SurveyCard from '@/components/survey/Card';
 import useUser from 'hooks/useUser';
 import useSurveys from 'hooks/useSurveys';
 import { sliderSettings } from './sliderSettings';
+import { surveysPerPage } from './surveysPerPage';
 import { formatDate } from 'helpers/date';
 
 import 'slick-carousel/slick/slick.css';
@@ -22,7 +23,6 @@ export const surveyListTestIds = {
 const SurveyList = ({ setBackgroundImagePath }) => {
   const [surveys, setSurveys] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const [slideId, setSlideId] = useState();
 
   const date = new Date();
@@ -31,10 +31,11 @@ const SurveyList = ({ setBackgroundImagePath }) => {
 
   useEffect(() => {
     if (surveyResponse) {
-      const updatedSurveyResponse = [...surveys, ...surveyResponse.data];
-      setSurveys(updatedSurveyResponse);
+      const newSurveys = surveys.length === 0 ? Array(surveyResponse.meta.records).fill(null) : surveys;
+      const startIndex = (currentPage - 1) * surveysPerPage;
+      newSurveys.splice(startIndex, surveysPerPage, ...surveyResponse.data);
+      setSurveys(newSurveys);
       setSlideId(surveyResponse.data[0].id);
-      setTotalPages(surveyResponse.meta.pages);
     }
   }, [surveyResponse]);
 
@@ -44,17 +45,33 @@ const SurveyList = ({ setBackgroundImagePath }) => {
 
   const sliderEvents = {
     beforeChange: (_oldIndex, newIndex) => beforeSlideChange(newIndex),
-    afterChange: () => afterSlideChange(),
+  };
+
+  const renderSurvey = survey => {
+    if (survey) {
+      return (
+        <SurveyCard
+          key={survey?.id}
+          slideId={slideId}
+          title={survey?.attributes?.title}
+          description={survey?.attributes?.description}
+          coverImageUrl={survey?.attributes?.coverImageUrl}
+        />
+      );
+    } else {
+      return <div className="">Loading</div>;
+    }
   };
 
   const beforeSlideChange = newSlideIndex => {
-    setBackgroundImagePath(surveys[newSlideIndex].attributes.coverImageUrl);
-    setSlideId(surveys[newSlideIndex].id);
-  };
+    const currentSurvey = surveys[newSlideIndex];
 
-  const afterSlideChange = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage => currentPage + 1);
+    if (currentSurvey) {
+      setBackgroundImagePath(currentSurvey.attributes.coverImageUrl);
+      setSlideId(currentSurvey.id);
+    } else {
+      const currentPageFromSlideIndex = Math.floor(newSlideIndex / surveysPerPage) + 1;
+      setCurrentPage(currentPageFromSlideIndex);
     }
   };
 
@@ -68,17 +85,7 @@ const SurveyList = ({ setBackgroundImagePath }) => {
       <div className="font-extrabold text-white text-base-xxxl mb-8" data-test-id={surveyListTestIds.text}>
         Today
       </div>
-      <Slider {...sliderConfig}>
-        {surveys.map(survey => (
-          <SurveyCard
-            key={survey.id}
-            slideId={slideId}
-            title={survey.attributes.title}
-            description={survey.attributes.description}
-            coverImageUrl={survey.attributes.coverImageUrl}
-          />
-        ))}
-      </Slider>
+      <Slider {...sliderConfig}>{surveys.map(survey => renderSurvey(survey))}</Slider>
     </div>
   );
 };
