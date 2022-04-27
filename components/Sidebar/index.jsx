@@ -24,7 +24,7 @@ const Sidebar = ({ name }) => {
 
   return (
     <div
-      className="fixed bg-sidebar backdrop-blur-4xl right-0 w-[264px] pl-8 pt-8 pr-8 h-full"
+      className="fixed w-[164px] md:w-[174px] lg:w-[264px] h-full bg-sidebar backdrop-blur-4xl right-0 pl-8 pt-8 pr-8"
       data-test-id={sidebarTestIds.base}
     >
       <div className="text-white text-base-xxl font-extrabold h-9 pt-2 mb-5" data-test-id={sidebarTestIds.userName}>

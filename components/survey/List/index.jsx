@@ -78,7 +78,7 @@ const SurveyList = ({ setBackgroundImagePath }) => {
   const sliderConfig = { ...sliderSettings, dotsClass: `slick-dots ${styles.slickDots}`, ...sliderEvents };
 
   return (
-    <div className="w-[36.667%] m-auto">
+    <div className="w-[313px] md:w-[419px] lg:w-[704px] m-auto">
       <div className="font-extrabold text-white text-base-xs uppercase mb-1" data-test-id={surveyListTestIds.date}>
         {formatDate(date)}
       </div>

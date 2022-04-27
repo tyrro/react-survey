@@ -15,7 +15,7 @@ export const surveyCardTestIds = {
 const SurveyCard = ({ slideId, title, description, coverImageUrl }) => (
   <div data-test-id={surveyCardTestIds.base}>
     <div className="relative w-full h-[302px] mb-8" data-test-id={surveyCardTestIds.coverImageUrl}>
-      <Image className="rounded-xl" src={`${coverImageUrl}l`} alt="cover image" layout="fill" />
+      <Image className="rounded-xl" src={`${coverImageUrl}l`} alt="cover image" layout="fill" objectFit="cover" />
     </div>
     <div className="flex justify-between">
       <div className="w-4/5 truncate">
