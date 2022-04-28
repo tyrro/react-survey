@@ -12,10 +12,19 @@ export const surveyCardTestIds = {
   angleRightIcon: 'survey-card__details',
 };
 
+export const highResolutionImageUrl = url => `${url}l`;
+
 const SurveyCard = ({ slideId, title, description, coverImageUrl }) => (
   <div data-test-id={surveyCardTestIds.base}>
-    <div className="relative w-full h-[302px] mb-8" data-test-id={surveyCardTestIds.coverImageUrl}>
-      <Image className="rounded-xl" src={`${coverImageUrl}l`} alt="cover image" layout="fill" objectFit="cover" />
+    <div className="relative w-full h-[302px] mb-8">
+      <Image
+        className="rounded-xl"
+        src={highResolutionImageUrl(coverImageUrl)}
+        alt="cover image"
+        layout="fill"
+        objectFit="cover"
+        data-test-id={surveyCardTestIds.coverImageUrl}
+      />
     </div>
     <div className="flex justify-between">
       <div className="w-4/5 truncate">

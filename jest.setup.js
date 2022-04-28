@@ -5,8 +5,8 @@ configure({ testIdAttribute: 'data-test-id' });
 
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: props => {
-    return props.src;
+  default: ({ src, alt, ...attributes }) => {
+    return <img src={src} alt={alt} data-test-id={attributes['data-test-id']} />;
   },
 }));
 

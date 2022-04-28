@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import SurveyCard, { surveyCardTestIds } from '.';
+import SurveyCard, { surveyCardTestIds, highResolutionImageUrl } from '.';
 
 describe('SurveyCard', () => {
   const props = { slideId: 'id', title: 'a survey card', description: 'a nice survey card', coverImageUrl: '/cover.png' };
@@ -13,7 +13,7 @@ describe('SurveyCard', () => {
     const coverImage = screen.getByTestId(surveyCardTestIds.coverImageUrl);
 
     expect(coverImage).toBeVisible();
-    expect(coverImage).toHaveTextContent(props.coverImageUrl);
+    expect(coverImage).toHaveAttribute('src', highResolutionImageUrl(props.coverImageUrl));
   });
 
   it('renders the title', () => {

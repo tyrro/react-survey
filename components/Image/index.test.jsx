@@ -3,23 +3,18 @@ import { render, screen } from '@testing-library/react';
 import Image from '.';
 
 describe('Image', () => {
-  it('renders the provided icon', () => {
+  it('renders the provided image', () => {
     const props = {
-      src: '/icon.svg',
-      alt: 'icon',
+      src: '/image.svg',
+      alt: 'image',
+      'data-test-id': 'image',
     };
 
-    const dataTestId = 'icon';
+    render(<Image {...props} />);
 
-    render(
-      <div data-test-id={dataTestId}>
-        <Image {...props} />
-      </div>,
-    );
+    const image = screen.getByTestId(props['data-test-id']);
 
-    const icon = screen.getByTestId(dataTestId);
-
-    expect(icon).toBeVisible();
-    expect(icon).toHaveTextContent(props.src);
+    expect(image).toBeVisible();
+    expect(image).toHaveAttribute('src', props.src);
   });
 });
