@@ -5,11 +5,15 @@ import { useRouter } from 'next/router';
 import useUser from 'hooks/useUser';
 import useSurvey from 'hooks/useSurvey';
 
+export const questionDetailsTestIds = {
+  base: 'question-details',
+};
+
 const QuestionDetails = ({ setBackgroundImagePath }) => {
   const router = useRouter();
-  const { id } = router.query;
+  const surveyId = router.query.id;
   const { user } = useUser();
-  const survey = useSurvey(user, id);
+  const survey = useSurvey(user, surveyId);
 
   useEffect(() => {
     if (survey) {
@@ -21,7 +25,7 @@ const QuestionDetails = ({ setBackgroundImagePath }) => {
     return null;
   }
 
-  return <div>Hello World</div>;
+  return <div data-test-id={questionDetailsTestIds.base}>TODO: Question rendering goes here</div>;
 };
 
 QuestionDetails.propTypes = {

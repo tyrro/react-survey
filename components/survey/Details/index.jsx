@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import Icon from '@/components/Icon';
+import Image from '@/components/Image';
 import Button from '@/components/Button';
 
 import useUser from 'hooks/useUser';
@@ -18,11 +18,13 @@ export const surveyDetailsTestIds = {
   startSurveyButton: 'survey-details__start-survey',
 };
 
+export const highResolutionImageUrl = url => `${url}l`;
+
 const SurveyDetails = ({ setBackgroundImagePath }) => {
   const router = useRouter();
-  const { id } = router.query;
+  const surveyId = router.query.id;
   const { user } = useUser();
-  const survey = useSurvey(user, id);
+  const survey = useSurvey(user, surveyId);
 
   useEffect(() => {
     if (survey) {
@@ -40,11 +42,18 @@ const SurveyDetails = ({ setBackgroundImagePath }) => {
 
   return (
     <div
-      className="w-[704px] absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4"
+      className="w-[313px] md:w-[419px] lg:w-[704px] absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4"
       data-test-id={surveyDetailsTestIds.base}
     >
-      <div className="w-[704px] h-[302px] mb-8" data-test-id={surveyDetailsTestIds.coverImageUrl}>
-        <Icon className="rounded-xl" src={coverImageUrl} alt="cover image" width={704} height={302} />
+      <div className="relative w-full h-[302px] mb-8">
+        <Image
+          className="rounded-xl"
+          src={highResolutionImageUrl(coverImageUrl)}
+          alt="cover image"
+          layout="fill"
+          objectFit="cover"
+          data-test-id={surveyDetailsTestIds.coverImageUrl}
+        />
       </div>
       <div className="font-extrabold text-white text-base-xxxl mb-2" data-test-id={surveyDetailsTestIds.title}>
         {title}
@@ -52,7 +61,7 @@ const SurveyDetails = ({ setBackgroundImagePath }) => {
       <div className="text-white/70 text-base-large mb-8" data-test-id={surveyDetailsTestIds.introText}>
         {introText}
       </div>
-      <Link href={`/surveys/${id}/questions`}>
+      <Link href={`/surveys/${surveyId}/questions`}>
         <a>
           <Button type="button" size="huge" data-test-id={surveyDetailsTestIds.startSurveyButton}>
             <div className="pt-1 pr-2">Start Survey</div>
