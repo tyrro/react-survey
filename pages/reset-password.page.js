@@ -1,4 +1,4 @@
-import Icon from '@/components/Icon';
+import Image from '@/components/Image';
 import BackButton from '@/components/BackButton';
 import Background from '@/components/Background';
 import PasswordResetForm from '@/components/forms/PasswordReset';
@@ -18,7 +18,7 @@ const PasswordReset = () => {
         <div className="w-[327px] absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4">
           <div className="mb-8">
             <div className="h-10 text-center mb-6">
-              <Icon src={logo} alt="logo" />
+              <Image src={logo} alt="logo" />
             </div>
             <p className="text-white/60 text-center text-base-large" data-test-id={passwordResetPageTestIds.headlineText}>
               Enter your email to receive instruction for resetting your password

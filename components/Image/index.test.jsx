@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 
-import Icon from '.';
+import Image from '.';
 
-describe('Icon', () => {
+describe('Image', () => {
   it('renders the provided icon', () => {
     const props = {
       src: '/icon.svg',
@@ -13,7 +13,7 @@ describe('Icon', () => {
 
     render(
       <div data-test-id={dataTestId}>
-        <Icon {...props} />
+        <Image {...props} />
       </div>,
     );
 

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
-import Icon from '@/components/Icon';
+import Image from '@/components/Image';
 import angleRightIcon from '@/public/angle-right.svg';
 
 export const surveyCardTestIds = {
@@ -15,7 +15,7 @@ export const surveyCardTestIds = {
 const SurveyCard = ({ slideId, title, description, coverImageUrl }) => (
   <div data-test-id={surveyCardTestIds.base}>
     <div className="relative w-full h-[302px] mb-8" data-test-id={surveyCardTestIds.coverImageUrl}>
-      <Icon className="rounded-xl" src={`${coverImageUrl}l`} alt="cover image" layout="fill" objectFit="cover" />
+      <Image className="rounded-xl" src={`${coverImageUrl}l`} alt="cover image" layout="fill" objectFit="cover" />
     </div>
     <div className="flex justify-between">
       <div className="w-4/5 truncate">
@@ -29,7 +29,7 @@ const SurveyCard = ({ slideId, title, description, coverImageUrl }) => (
       <div className="w-14 h-14" data-test-id={surveyCardTestIds.angleRightIcon}>
         <Link href={`/surveys/${slideId}`}>
           <a>
-            <Icon className="cursor-pointer" src={angleRightIcon} alt="go to survey" />
+            <Image className="cursor-pointer" src={angleRightIcon} alt="go to survey" />
           </a>
         </Link>
       </div>

@@ -3,7 +3,7 @@ import surveyAdapter from '.';
 
 describe('surveyAdapter', () => {
   describe('fetchSurveys', () => {
-    describe('given the current page and an authorization header', () => {
+    describe('given a current page and an authorization header', () => {
       it('calls the get method from base adapter', () => {
         const getSpy = jest.spyOn(baseAdapter, 'get').mockImplementation(jest.fn());
 
