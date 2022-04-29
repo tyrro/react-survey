@@ -7,7 +7,7 @@ import SurveyCard from '@/components/survey/Card';
 import useUser from 'hooks/useUser';
 import useSurveys from 'hooks/useSurveys';
 import { sliderSettings } from './sliderSettings';
-import { surveysPerPage } from './surveysPerPage';
+import { surveysPerPage } from '../../../constants/surveyConfig';
 import { formatDate } from 'helpers/date';
 
 import 'slick-carousel/slick/slick.css';
