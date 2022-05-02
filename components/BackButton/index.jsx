@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import backButton from '@/public/angle-left.svg';
+import angleLeftIcon from '@/public/angle-left.svg';
 
 export const backButtonTestIds = {
   button: 'back-button',
@@ -12,7 +12,7 @@ const BackButton = () => {
 
   return (
     <div className="w-7 h-[30px] cursor-pointer" data-test-id={backButtonTestIds.button} onClick={() => router.back()}>
-      <Image src={backButton} alt="back" />
+      <Image src={angleLeftIcon} alt="back" />
     </div>
   );
 };

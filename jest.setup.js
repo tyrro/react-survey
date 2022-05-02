@@ -9,3 +9,12 @@ jest.mock('next/image', () => ({
     return props.src;
   },
 }));
+
+// Fix jest issue with the react-slick component
+window.matchMedia = jest.fn().mockImplementation(query => ({
+  matches: false,
+  media: query,
+  onchange: null,
+  addListener: jest.fn(),
+  removeListener: jest.fn(),
+}));

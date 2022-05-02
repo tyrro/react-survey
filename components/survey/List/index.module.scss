@@ -1,0 +1,20 @@
+.slickDots {
+  @apply fixed left-0 mb-[42px];
+
+  li {
+    button::before,
+    button:focus::before {
+      @apply text-white opacity-20
+    }
+
+    button:hover::before {
+      @apply text-white opacity-100
+    }
+  }
+
+  :global li.slick-active {
+    button::before {
+      @apply text-white opacity-100
+    }
+  }
+}
