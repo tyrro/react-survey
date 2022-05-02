@@ -1,8 +1,6 @@
-import Image from 'next/image';
-
+import Image from '@/components/Image';
 import Background from '@/components/Background';
 import LoginForm from '@/components/forms/Login';
-
 import logo from '@/public/logo-large.svg';
 
 export const loginPageTestIds = {

@@ -1,5 +1,4 @@
-import Image from 'next/image';
-
+import Image from '@/components/Image';
 import BackButton from '@/components/BackButton';
 import Background from '@/components/Background';
 import PasswordResetForm from '@/components/forms/PasswordReset';

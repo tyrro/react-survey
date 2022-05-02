@@ -1,5 +1,6 @@
-import Image from 'next/image';
 import PropTypes from 'prop-types';
+
+import Image from '@/components/Image';
 
 export const backgroundTestIds = {
   foregroundChildren: 'foreground-children',
