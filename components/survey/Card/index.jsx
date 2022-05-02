@@ -14,7 +14,7 @@ export const surveyCardTestIds = {
 
 export const highResolutionImageUrl = url => `${url}l`;
 
-const SurveyCard = ({ slideId, title, description, coverImageUrl }) => (
+const SurveyCard = ({ surveyId, title, description, coverImageUrl }) => (
   <div data-test-id={surveyCardTestIds.base}>
     <div className="relative w-full h-[302px] mb-8">
       <Image
@@ -36,7 +36,7 @@ const SurveyCard = ({ slideId, title, description, coverImageUrl }) => (
         </div>
       </div>
       <div className="w-14 h-14" data-test-id={surveyCardTestIds.angleRightIcon}>
-        <Link href={`/surveys/${slideId}`}>
+        <Link href={`/surveys/${surveyId}`}>
           <a>
             <Image className="cursor-pointer" src={angleRightIcon} alt="go to survey" />
           </a>
@@ -47,7 +47,7 @@ const SurveyCard = ({ slideId, title, description, coverImageUrl }) => (
 );
 
 SurveyCard.propTypes = {
-  slideId: PropTypes.string.isRequired,
+  surveyId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   coverImageUrl: PropTypes.string.isRequired,

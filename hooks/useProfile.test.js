@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import useProfile from './useProfile';
 import profileAdapter from 'adapters/Profile';
 
-describe('userProfile', () => {
+describe('useProfile', () => {
   describe('given NO user is logged in', () => {
     it('does not return any data', () => {
       const user = { isLoggedIn: false };
