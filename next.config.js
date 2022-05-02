@@ -5,6 +5,15 @@ const nextConfig = {
   images: {
     domains: ['secure.gravatar.com', 'dhdbhh0jsld0o.cloudfront.net'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/surveys',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
