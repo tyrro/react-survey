@@ -7,7 +7,7 @@ import SurveyCard from '@/components/survey/Card';
 import useUser from 'hooks/useUser';
 import useSurveys from 'hooks/useSurveys';
 import { sliderSettings } from './sliderSettings';
-import { surveysPerPage } from './surveysPerPage';
+import { surveysPerPage } from '../../../constants/surveyConfig';
 import { formatDate } from 'helpers/date';
 
 import 'slick-carousel/slick/slick.css';
@@ -23,7 +23,8 @@ export const surveyListTestIds = {
 const SurveyList = ({ setBackgroundImagePath }) => {
   const [surveys, setSurveys] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [slideId, setSlideId] = useState();
+  const [currentSurveyOffset, setCurrentSurveyOffset] = useState(0);
+  const [currentSurveyId, setCurrentSurveyId] = useState();
 
   const date = new Date();
   const { user } = useUser();
@@ -35,7 +36,7 @@ const SurveyList = ({ setBackgroundImagePath }) => {
       const startIndex = (currentPage - 1) * surveysPerPage;
       newSurveys.splice(startIndex, surveysPerPage, ...surveyResponse.data);
       setSurveys(newSurveys);
-      setSlideId(surveyResponse.data[0].id);
+      setCurrentSurveyId(surveyResponse.data[currentSurveyOffset].id);
     }
   }, [surveyResponse]);
 
@@ -47,28 +48,34 @@ const SurveyList = ({ setBackgroundImagePath }) => {
     beforeChange: (_oldIndex, newIndex) => beforeSlideChange(newIndex),
   };
 
-  const renderSurvey = survey => {
-    if (survey) {
+  const renderSurveyCard = survey => {
+    if (!survey) {
       return (
-        <SurveyCard
-          key={survey?.id}
-          slideId={slideId}
-          title={survey?.attributes?.title}
-          description={survey?.attributes?.description}
-          coverImageUrl={survey?.attributes?.coverImageUrl}
-        />
+        <div key={currentSurveyOffset} className="">
+          Loading
+        </div>
       );
-    } else {
-      return <div className="">Loading</div>;
     }
+
+    return (
+      <SurveyCard
+        key={survey.id}
+        surveyId={currentSurveyId}
+        title={survey.attributes.title}
+        description={survey.attributes.description}
+        coverImageUrl={survey.attributes.coverImageUrl}
+      />
+    );
   };
 
   const beforeSlideChange = newSlideIndex => {
     const currentSurvey = surveys[newSlideIndex];
+    const currentSurveyOffset = newSlideIndex % surveysPerPage;
+    setCurrentSurveyOffset(currentSurveyOffset);
 
     if (currentSurvey) {
       setBackgroundImagePath(currentSurvey.attributes.coverImageUrl);
-      setSlideId(currentSurvey.id);
+      setCurrentSurveyId(currentSurvey.id);
     } else {
       const currentPageFromSlideIndex = Math.floor(newSlideIndex / surveysPerPage) + 1;
       setCurrentPage(currentPageFromSlideIndex);
@@ -85,7 +92,7 @@ const SurveyList = ({ setBackgroundImagePath }) => {
       <div className="font-extrabold text-white text-base-xxxl mb-8" data-test-id={surveyListTestIds.text}>
         Today
       </div>
-      <Slider {...sliderConfig}>{surveys.map(survey => renderSurvey(survey))}</Slider>
+      <Slider {...sliderConfig}>{surveys.map(survey => renderSurveyCard(survey))}</Slider>
     </div>
   );
 };
