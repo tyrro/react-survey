@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 
-import SurveyCard, { surveyCardTestIds, highResolutionImageUrl } from '.';
+import SurveyCard, { surveyCardTestIds } from '.';
+
+import { highResolutionImageUrl } from 'helpers/highResolutionImageUrl';
 
 describe('SurveyCard', () => {
   const props = { surveyId: 'id', title: 'a survey card', description: 'a nice survey card', coverImageUrl: '/cover.png' };
