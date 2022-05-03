@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import { surveyCardTestIds } from '@/components/survey/Card';
+import { emptySurveyCardTestIds } from '@/components/survey/EmptyCard';
 import SurveyList, { surveyListTestIds } from '.';
 
 import useUser from 'hooks/useUser';
@@ -33,12 +34,12 @@ const props = {
 describe('SurveyList', () => {
   beforeEach(() => {
     useUser.mockImplementation(() => jest.fn());
-    useSurveys.mockImplementation(() => mockUseSurveys);
-
-    render(<SurveyList {...props} />);
   });
 
   it('renders a today text', () => {
+    useSurveys.mockImplementation(() => mockUseSurveys);
+    render(<SurveyList {...props} />);
+
     const text = screen.getByTestId(surveyListTestIds.text);
 
     expect(text).toBeVisible();
@@ -46,8 +47,39 @@ describe('SurveyList', () => {
   });
 
   it('renders a survey card', () => {
+    useSurveys.mockImplementation(() => mockUseSurveys);
+    render(<SurveyList {...props} />);
+
     const surveyCard = screen.getByTestId(surveyCardTestIds.base);
 
     expect(surveyCard).toBeVisible();
+  });
+
+  it("does't render empty survey card", () => {
+    useSurveys.mockImplementation(() => mockUseSurveys);
+    render(<SurveyList {...props} />);
+
+    const emptySurveyCard = screen.queryByTestId(emptySurveyCardTestIds.base);
+
+    expect(emptySurveyCard).toBeNull();
+  });
+
+  describe('given surveys are empty', () => {
+    const emptySurveys = {
+      data: [],
+      meta: {
+        page: 1,
+        pages: 0,
+      },
+    };
+
+    it('renders empty survey card', () => {
+      useSurveys.mockImplementation(() => emptySurveys);
+      render(<SurveyList {...props} />);
+
+      const emptySurveyCard = screen.getByTestId(emptySurveyCardTestIds.base);
+
+      expect(emptySurveyCard).toBeVisible();
+    });
   });
 });

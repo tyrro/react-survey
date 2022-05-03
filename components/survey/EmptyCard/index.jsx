@@ -1,0 +1,38 @@
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+
+import Image from '@/components/Image';
+import sunglasses from '@/public/sunglasses.svg';
+
+export const emptySurveyCardTestIds = {
+  base: 'empty-survey-card',
+  sunglassesIcon: 'empty-survey-card__sunglasses-icon',
+  emptyText: 'empty-survey-card__empty-text',
+};
+
+const EmptySurveyCard = ({ setBackgroundImagePath }) => {
+  useEffect(() => {
+    setBackgroundImagePath('/dark.png');
+  });
+
+  return (
+    <div
+      className="w-[275px] md:w-[320px] lg:w-[443px] absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4"
+      data-test-id={emptySurveyCardTestIds.base}
+    >
+      <div className="w-16 h-16 m-auto mb-8">
+        <Image src={sunglasses} alt="sunglasses" data-test-id={emptySurveyCardTestIds.sunglassesIcon} />
+      </div>
+      <div className="font-extrabold text-white text-base-xxxl -tracking-[0.5px]" data-test-id={emptySurveyCardTestIds.emptyText}>
+        You&apos;ve completed all the surveys.
+      </div>
+      <div className="font-extrabold text-white text-base-xxxl lg:text-center">Take a moment.</div>
+    </div>
+  );
+};
+
+EmptySurveyCard.propTypes = {
+  setBackgroundImagePath: PropTypes.func.isRequired,
+};
+
+export default EmptySurveyCard;

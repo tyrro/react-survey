@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 
 import SurveyCard from '@/components/survey/Card';
+import EmptySurveyCard from '@/components/survey/EmptyCard';
 
 import useUser from 'hooks/useUser';
 import useSurveys from 'hooks/useSurveys';
@@ -36,13 +37,9 @@ const SurveyList = ({ setBackgroundImagePath }) => {
       const startIndex = (currentPage - 1) * surveysPerPage;
       newSurveys.splice(startIndex, surveysPerPage, ...surveyResponse.data);
       setSurveys(newSurveys);
-      setCurrentSurveyId(surveyResponse.data[currentSurveyOffset].id);
+      setCurrentSurveyId(surveyResponse.data[currentSurveyOffset]?.id);
     }
   }, [surveyResponse]);
-
-  if (surveys.length === 0) {
-    return null;
-  }
 
   const sliderEvents = {
     beforeChange: (_oldIndex, newIndex) => beforeSlideChange(newIndex),
@@ -84,15 +81,25 @@ const SurveyList = ({ setBackgroundImagePath }) => {
 
   const sliderConfig = { ...sliderSettings, dotsClass: `slick-dots ${styles.slickDots}`, ...sliderEvents };
 
+  const renderSurveys = () => {
+    if (surveys.length === 0 && surveyResponse?.meta?.pages === 0) {
+      return <EmptySurveyCard setBackgroundImagePath={setBackgroundImagePath} />;
+    } else if (surveys.length === 0) {
+      return null;
+    } else {
+      return <Slider {...sliderConfig}>{surveys.map(survey => renderSurveyCard(survey))}</Slider>;
+    }
+  };
+
   return (
     <div className="w-[313px] md:w-[419px] lg:w-[704px] m-auto">
       <div className="font-extrabold text-white text-base-xs uppercase mb-1" data-test-id={surveyListTestIds.date}>
         {formatDate(date)}
       </div>
-      <div className="font-extrabold text-white text-base-xxxl mb-8" data-test-id={surveyListTestIds.text}>
+      <div className="font-extrabold text-white text-base-xxxxl mb-8" data-test-id={surveyListTestIds.text}>
         Today
       </div>
-      <Slider {...sliderConfig}>{surveys.map(survey => renderSurveyCard(survey))}</Slider>
+      {renderSurveys()}
     </div>
   );
 };
