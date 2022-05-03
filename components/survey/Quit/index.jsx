@@ -30,7 +30,7 @@ const SurveyQuit = () => {
       {quitConfirmationModalOpen &&
         createPortal(
           <div
-            className="w-[467px] absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 bg-sidebar/100 backdrop-blur-4xl rounded-[14px] p-6"
+            className="w-[313px] md:w-[390px] lg:w-[467px] absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 bg-sidebar/100 backdrop-blur-4xl rounded-[14px] p-6"
             data-test-id={surveyQuitTestIds.base}
           >
             <div className="font-extrabold text-white text-base-xxl mb-2" data-test-id={surveyQuitTestIds.warningText}>
