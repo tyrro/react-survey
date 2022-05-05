@@ -7,7 +7,7 @@ import sunglasses from '@/public/sunglasses.svg';
 export const emptySurveyCardTestIds = {
   base: 'empty-survey-card',
   sunglassesIcon: 'empty-survey-card__sunglasses-icon',
-  emptyText: 'empty-survey-card__empty-text',
+  surveyCompletedText: 'empty-survey-card__survey-completed-text',
 };
 
 const EmptySurveyCard = ({ setBackgroundImagePath }) => {
@@ -23,7 +23,10 @@ const EmptySurveyCard = ({ setBackgroundImagePath }) => {
       <div className="w-16 h-16 m-auto mb-8">
         <Image src={sunglasses} alt="sunglasses" data-test-id={emptySurveyCardTestIds.sunglassesIcon} />
       </div>
-      <div className="font-extrabold text-white text-base-xxxl -tracking-[0.5px]" data-test-id={emptySurveyCardTestIds.emptyText}>
+      <div
+        className="font-extrabold text-white text-base-xxxl -tracking-[0.5px]"
+        data-test-id={emptySurveyCardTestIds.surveyCompletedText}
+      >
         You&apos;ve completed all the surveys.
       </div>
       <div className="font-extrabold text-white text-base-xxxl lg:text-center">Take a moment.</div>
