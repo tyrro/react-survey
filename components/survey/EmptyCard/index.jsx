@@ -24,12 +24,11 @@ const EmptySurveyCard = ({ setBackgroundImagePath }) => {
         <Image src={sunglasses} alt="sunglasses" data-test-id={emptySurveyCardTestIds.sunglassesIcon} />
       </div>
       <div
-        className="font-extrabold text-white text-base-xxxl -tracking-[0.5px]"
+        className="font-extrabold text-white text-base-xxxl lg:text-center -tracking-[0.5px]"
         data-test-id={emptySurveyCardTestIds.surveyCompletedText}
       >
-        You&apos;ve completed all the surveys.
+        You&apos;ve completed all the surveys. Take a moment.
       </div>
-      <div className="font-extrabold text-white text-base-xxxl lg:text-center">Take a moment.</div>
     </div>
   );
 };

@@ -19,6 +19,6 @@ describe('EmptySurveyCard', () => {
     const surveyCompletedText = screen.getByTestId(emptySurveyCardTestIds.surveyCompletedText);
 
     expect(surveyCompletedText).toBeVisible();
-    expect(surveyCompletedText).toHaveTextContent("You've completed all the surveys");
+    expect(surveyCompletedText).toHaveTextContent("You've completed all the surveys. Take a moment.");
   });
 });
