@@ -51,5 +51,16 @@ describe('SurveyQuit', () => {
       expect(quitConfirmationText).toBeVisible();
       expect(quitConfirmationText).toHaveTextContent('Are you sure you want to quit the survey?');
     });
+
+    it('displays buttons to quit modal', () => {
+      const quitConfirmationConfirmButton = screen.getByTestId(surveyQuitTestIds.quitConfirmationConfirmButton);
+      const quitConfirmationCancelButton = screen.getByTestId(surveyQuitTestIds.quitConfirmationCancelButton);
+
+      expect(quitConfirmationConfirmButton).toBeVisible();
+      expect(quitConfirmationConfirmButton).toHaveTextContent('Yes');
+
+      expect(quitConfirmationCancelButton).toBeVisible();
+      expect(quitConfirmationCancelButton).toHaveTextContent('Cancel');
+    });
   });
 });
