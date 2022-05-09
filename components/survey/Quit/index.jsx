@@ -34,7 +34,7 @@ const SurveyQuit = () => {
         src={circleXmarkIcon}
         alt="quit survey"
         data-test-id={surveyQuitTestIds.quitSurveyIcon}
-        onClick={() => setQuitConfirmationModalOpen(value => !value)}
+        onClick={() => setQuitConfirmationModalOpen(true)}
       />
       {quitConfirmationModalOpen &&
         createPortal(
