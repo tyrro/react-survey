@@ -41,9 +41,9 @@ const SurveyList = ({ setBackgroundImagePath }) => {
     }
   }, [surveyResponse]);
 
-  const sliderEvents = {
-    beforeChange: (_oldIndex, newIndex) => beforeSlideChange(newIndex),
-  };
+  if (surveys.length === 0 && surveyResponse?.meta?.pages === 0) {
+    return <EmptySurveyCard setBackgroundImagePath={setBackgroundImagePath} />;
+  }
 
   const renderSurveyCard = survey => {
     if (!survey) {
@@ -79,17 +79,11 @@ const SurveyList = ({ setBackgroundImagePath }) => {
     }
   };
 
-  const sliderConfig = { ...sliderSettings, dotsClass: `slick-dots ${styles.slickDots}`, ...sliderEvents };
-
-  const renderSurveys = () => {
-    if (surveys.length === 0 && surveyResponse?.meta?.pages === 0) {
-      return <EmptySurveyCard setBackgroundImagePath={setBackgroundImagePath} />;
-    } else if (surveys.length === 0) {
-      return null;
-    } else {
-      return <Slider {...sliderConfig}>{surveys.map(survey => renderSurveyCard(survey))}</Slider>;
-    }
+  const sliderEvents = {
+    beforeChange: (_oldIndex, newIndex) => beforeSlideChange(newIndex),
   };
+
+  const sliderConfig = { ...sliderSettings, dotsClass: `slick-dots ${styles.slickDots}`, ...sliderEvents };
 
   return (
     <div className="w-[313px] md:w-[419px] lg:w-[704px] m-auto">
@@ -99,7 +93,7 @@ const SurveyList = ({ setBackgroundImagePath }) => {
       <div className="font-extrabold text-white text-base-xxxxl mb-8" data-test-id={surveyListTestIds.text}>
         Today
       </div>
-      {renderSurveys()}
+      <Slider {...sliderConfig}>{surveys.map(survey => renderSurveyCard(survey))}</Slider>;
     </div>
   );
 };

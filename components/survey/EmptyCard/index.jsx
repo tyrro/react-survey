@@ -13,7 +13,7 @@ export const emptySurveyCardTestIds = {
 const EmptySurveyCard = ({ setBackgroundImagePath }) => {
   useEffect(() => {
     setBackgroundImagePath('/dark.png');
-  });
+  }, [setBackgroundImagePath]);
 
   return (
     <div
