@@ -42,7 +42,7 @@ const SurveyList = ({ setBackgroundImagePath }) => {
   }, [surveyResponse]);
 
   if (surveys.length === 0 && surveyResponse?.meta?.pages === 0) {
-    return <EmptySurveyCard setBackgroundImagePath={setBackgroundImagePath} />;
+    return <EmptySurveyCard />;
   }
 
   const renderSurveyCard = survey => {
@@ -93,7 +93,7 @@ const SurveyList = ({ setBackgroundImagePath }) => {
       <div className="font-extrabold text-white text-base-xxxxl mb-8" data-test-id={surveyListTestIds.text}>
         Today
       </div>
-      <Slider {...sliderConfig}>{surveys.map(survey => renderSurveyCard(survey))}</Slider>;
+      <Slider {...sliderConfig}>{surveys.map(survey => renderSurveyCard(survey))}</Slider>
     </div>
   );
 };

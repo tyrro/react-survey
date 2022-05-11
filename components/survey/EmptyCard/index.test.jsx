@@ -3,10 +3,8 @@ import { render, screen } from '@testing-library/react';
 import EmptySurveyCard, { emptySurveyCardTestIds } from '.';
 
 describe('EmptySurveyCard', () => {
-  const props = { setBackgroundImagePath: jest.fn() };
-
   beforeEach(() => {
-    render(<EmptySurveyCard {...props} />);
+    render(<EmptySurveyCard />);
   });
 
   it('renders a sunglasses icon', () => {
