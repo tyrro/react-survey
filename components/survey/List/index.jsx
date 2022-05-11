@@ -37,9 +37,15 @@ const SurveyList = ({ setBackgroundImagePath }) => {
       const startIndex = (currentPage - 1) * surveysPerPage;
       newSurveys.splice(startIndex, surveysPerPage, ...surveyResponse.data);
       setSurveys(newSurveys);
-      setCurrentSurveyId(surveyResponse.data[currentSurveyOffset]?.id);
     }
   }, [surveyResponse]);
+
+  useEffect(() => {
+    if (surveyResponse?.data.length > 0) {
+      setCurrentSurveyId(surveyResponse.data[currentSurveyOffset].id);
+      setBackgroundImagePath(surveyResponse.data[currentSurveyOffset].attributes.coverImageUrl);
+    }
+  }, [surveyResponse, currentSurveyOffset, setBackgroundImagePath]);
 
   if (surveys.length === 0 && surveyResponse?.meta?.pages === 0) {
     return <EmptySurveyCard />;
