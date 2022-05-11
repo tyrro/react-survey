@@ -90,7 +90,7 @@ const LoginForm = () => {
             <a className="absolute text-white/50 text-base-small right-3 bottom-4">Forgot?</a>
           </Link>
         </div>
-        <Button type="submit" size="medium" data-test-id={loginFormTestIds.loginButton}>
+        <Button type="submit" size="large" data-test-id={loginFormTestIds.loginButton}>
           Sign in
         </Button>
       </form>

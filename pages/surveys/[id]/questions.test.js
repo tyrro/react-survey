@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { render, screen } from '@testing-library/react';
 
 import { questionDetailsTestIds } from '@/components/question/Details';
+import { surveyQuitTestIds } from '@/components/survey/Quit';
 import Questions from './questions.page';
 
 import useUser from 'hooks/useUser';
@@ -38,6 +39,12 @@ describe('Questions', () => {
     useSurvey.mockImplementation(() => mockUseSurvey);
 
     render(<Questions />);
+  });
+
+  it('renders a close icon to quit survey', () => {
+    const quitSurveyIcon = screen.getByTestId(surveyQuitTestIds.quitSurveyIcon);
+
+    expect(quitSurveyIcon).toBeVisible();
   });
 
   it('renders QuestionDetails component', () => {

@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Image from '@/components/Image';
 import angleRightIcon from '@/public/angle-right.svg';
 
+import { highResolutionImageUrl } from 'helpers/highResolutionImageUrl';
+
 export const surveyCardTestIds = {
   base: 'survey-card',
   coverImageUrl: 'survey-card__cover_image_url',
@@ -11,8 +13,6 @@ export const surveyCardTestIds = {
   description: 'survey-card__description',
   angleRightIcon: 'survey-card__details',
 };
-
-export const highResolutionImageUrl = url => `${url}l`;
 
 const SurveyCard = ({ surveyId, title, description, coverImageUrl }) => (
   <div data-test-id={surveyCardTestIds.base}>

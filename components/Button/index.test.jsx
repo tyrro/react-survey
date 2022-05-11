@@ -8,6 +8,7 @@ describe('Button', () => {
       type: 'reset',
       size: 'small',
       dark: true,
+      className: 'custom-class',
       'data-test-id': 'reset_button',
     };
 
@@ -22,5 +23,6 @@ describe('Button', () => {
     expect(button).toHaveAttribute('type', props.type);
     expect(button).toHaveClass(SIZE_CLASSES[props.size]);
     expect(button).toHaveClass('bg-dark');
+    expect(button).toHaveClass(props.className);
   });
 });

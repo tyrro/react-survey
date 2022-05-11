@@ -1,7 +1,9 @@
 import { useRouter } from 'next/router';
 import { render, screen } from '@testing-library/react';
 
-import SurveyDetails, { surveyDetailsTestIds, highResolutionImageUrl } from '.';
+import SurveyDetails, { surveyDetailsTestIds } from '.';
+
+import { highResolutionImageUrl } from 'helpers/highResolutionImageUrl';
 
 import useUser from 'hooks/useUser';
 import useSurvey from 'hooks/useSurvey';

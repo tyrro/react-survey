@@ -10,7 +10,7 @@ export const sidebarTestIds = {
   button: 'sidebar__logout-button',
 };
 
-const Sidebar = ({ name }) => {
+const Sidebar = ({ headerRef, name }) => {
   const { mutateUser } = useUser({
     redirectTo: '/login',
   });
@@ -24,6 +24,7 @@ const Sidebar = ({ name }) => {
 
   return (
     <div
+      ref={headerRef}
       className="fixed w-[164px] md:w-[174px] lg:w-[264px] h-full bg-sidebar backdrop-blur-4xl right-0 pl-8 pt-8 pr-8"
       data-test-id={sidebarTestIds.base}
     >
@@ -43,6 +44,7 @@ const Sidebar = ({ name }) => {
 };
 
 Sidebar.propTypes = {
+  headerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({ current: PropTypes.object })]),
   name: PropTypes.string.isRequired,
 };
 

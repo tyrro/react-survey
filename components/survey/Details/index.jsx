@@ -10,6 +10,8 @@ import useUser from 'hooks/useUser';
 import useSurvey from 'hooks/useSurvey';
 import { getQuestionsFromSurvey } from './getQuestionsFromSurvey';
 
+import { highResolutionImageUrl } from 'helpers/highResolutionImageUrl';
+
 export const surveyDetailsTestIds = {
   base: 'survey-details',
   coverImageUrl: 'survey-details__cover_image_url',
@@ -17,8 +19,6 @@ export const surveyDetailsTestIds = {
   introText: 'survey-details__intro-text',
   startSurveyButton: 'survey-details__start-survey',
 };
-
-export const highResolutionImageUrl = url => `${url}l`;
 
 const SurveyDetails = ({ setBackgroundImagePath }) => {
   const router = useRouter();
@@ -63,7 +63,7 @@ const SurveyDetails = ({ setBackgroundImagePath }) => {
       </div>
       <Link href={`/surveys/${surveyId}/questions`}>
         <a>
-          <Button type="button" size="huge" data-test-id={surveyDetailsTestIds.startSurveyButton}>
+          <Button type="button" size="large" data-test-id={surveyDetailsTestIds.startSurveyButton}>
             <div className="pt-1 pr-2">Start Survey</div>
           </Button>
         </a>
