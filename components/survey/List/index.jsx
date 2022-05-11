@@ -14,6 +14,7 @@ import { formatDate } from 'helpers/date';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './index.module.scss';
+import LoadingScreen from '@/components/LoadingScreen';
 
 export const surveyListTestIds = {
   base: 'survey-list',
@@ -47,15 +48,15 @@ const SurveyList = ({ setBackgroundImagePath }) => {
     }
   }, [surveyResponse, currentSurveyOffset, setBackgroundImagePath]);
 
-  if (surveys.length === 0 && surveyResponse?.meta?.pages === 0) {
+  if (surveys.length === 0 && surveyResponse?.meta?.records === 0) {
     return <EmptySurveyCard />;
   }
 
   const renderSurveyCard = survey => {
     if (!survey) {
       return (
-        <div key={currentSurveyOffset} className="">
-          Loading
+        <div key={currentSurveyOffset}>
+          <SurveyCard isSurveyLoading={true} />
         </div>
       );
     }
@@ -90,16 +91,21 @@ const SurveyList = ({ setBackgroundImagePath }) => {
   };
 
   const sliderConfig = { ...sliderSettings, dotsClass: `slick-dots ${styles.slickDots}`, ...sliderEvents };
+  const isSurveyLoading = surveys.length === 0;
 
   return (
     <div className="w-[313px] md:w-[419px] lg:w-[704px] m-auto">
       <div className="font-extrabold text-white text-base-xs uppercase mb-1" data-test-id={surveyListTestIds.date}>
-        {formatDate(date)}
+        {isSurveyLoading ? <LoadingScreen width={117} height={18} className="mb-1" /> : formatDate(date)}
       </div>
       <div className="font-extrabold text-white text-base-xxxxl mb-8" data-test-id={surveyListTestIds.text}>
-        Today
+        {isSurveyLoading ? <LoadingScreen width={90} height={18} /> : 'Today'}
       </div>
-      <Slider {...sliderConfig}>{surveys.map(survey => renderSurveyCard(survey))}</Slider>
+      {isSurveyLoading ? (
+        <SurveyCard isSurveyLoading={true} />
+      ) : (
+        <Slider {...sliderConfig}>{surveys.map(survey => renderSurveyCard(survey))}</Slider>
+      )}
     </div>
   );
 };
