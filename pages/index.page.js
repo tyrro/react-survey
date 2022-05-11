@@ -8,7 +8,7 @@ import SurveyList from '@/components/survey/List';
 import useUser from 'hooks/useUser';
 
 export default function Home() {
-  const [backgroundImagePath, setBackgroundImagePath] = useState('/background.png');
+  const [backgroundImagePath, setBackgroundImagePath] = useState('');
 
   const { user } = useUser({
     redirectTo: '/login',

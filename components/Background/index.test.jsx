@@ -15,4 +15,19 @@ describe('Background', () => {
 
     expect(foregroundChildren).toHaveTextContent(props.children);
   });
+
+  describe('given the imagePath is empty', () => {
+    const props = {
+      imagePath: '',
+    };
+
+    it('renders a dark background', () => {
+      render(<Background {...props} />);
+
+      const darkBackground = screen.getByTestId(backgroundTestIds.image);
+
+      expect(darkBackground).toBeVisible();
+      expect(darkBackground).toHaveAttribute('alt', 'dark background');
+    });
+  });
 });

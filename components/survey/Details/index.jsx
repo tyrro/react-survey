@@ -55,7 +55,7 @@ const SurveyDetails = ({ setBackgroundImagePath }) => {
           data-test-id={surveyDetailsTestIds.coverImageUrl}
         />
       </div>
-      <div className="font-extrabold text-white text-base-xxxl mb-2" data-test-id={surveyDetailsTestIds.title}>
+      <div className="font-extrabold text-white text-base-xxxxl mb-2" data-test-id={surveyDetailsTestIds.title}>
         {title}
       </div>
       <div className="text-white/70 text-base-large mb-8" data-test-id={surveyDetailsTestIds.introText}>

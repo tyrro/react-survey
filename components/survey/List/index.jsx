@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 
 import SurveyCard from '@/components/survey/Card';
+import EmptySurveyCard from '@/components/survey/EmptyCard';
 
 import useUser from 'hooks/useUser';
 import useSurveys from 'hooks/useSurveys';
@@ -36,17 +37,19 @@ const SurveyList = ({ setBackgroundImagePath }) => {
       const startIndex = (currentPage - 1) * surveysPerPage;
       newSurveys.splice(startIndex, surveysPerPage, ...surveyResponse.data);
       setSurveys(newSurveys);
-      setCurrentSurveyId(surveyResponse.data[currentSurveyOffset].id);
     }
   }, [surveyResponse]);
 
-  if (surveys.length === 0) {
-    return null;
-  }
+  useEffect(() => {
+    if (surveyResponse?.data.length > 0) {
+      setCurrentSurveyId(surveyResponse.data[currentSurveyOffset].id);
+      setBackgroundImagePath(surveyResponse.data[currentSurveyOffset].attributes.coverImageUrl);
+    }
+  }, [surveyResponse, currentSurveyOffset, setBackgroundImagePath]);
 
-  const sliderEvents = {
-    beforeChange: (_oldIndex, newIndex) => beforeSlideChange(newIndex),
-  };
+  if (surveys.length === 0 && surveyResponse?.meta?.pages === 0) {
+    return <EmptySurveyCard />;
+  }
 
   const renderSurveyCard = survey => {
     if (!survey) {
@@ -82,6 +85,10 @@ const SurveyList = ({ setBackgroundImagePath }) => {
     }
   };
 
+  const sliderEvents = {
+    beforeChange: (_oldIndex, newIndex) => beforeSlideChange(newIndex),
+  };
+
   const sliderConfig = { ...sliderSettings, dotsClass: `slick-dots ${styles.slickDots}`, ...sliderEvents };
 
   return (
@@ -89,7 +96,7 @@ const SurveyList = ({ setBackgroundImagePath }) => {
       <div className="font-extrabold text-white text-base-xs uppercase mb-1" data-test-id={surveyListTestIds.date}>
         {formatDate(date)}
       </div>
-      <div className="font-extrabold text-white text-base-xxxl mb-8" data-test-id={surveyListTestIds.text}>
+      <div className="font-extrabold text-white text-base-xxxxl mb-8" data-test-id={surveyListTestIds.text}>
         Today
       </div>
       <Slider {...sliderConfig}>{surveys.map(survey => renderSurveyCard(survey))}</Slider>
