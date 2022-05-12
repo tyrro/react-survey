@@ -70,6 +70,7 @@ describe('SurveyList', () => {
       meta: {
         page: 1,
         pages: 0,
+        records: 0,
       },
     };
 

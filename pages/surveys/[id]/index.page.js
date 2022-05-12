@@ -14,7 +14,7 @@ const Survey = () => {
   });
 
   if (!user || !user.isLoggedIn) {
-    return <div>Loading</div>;
+    return null;
   }
 
   return (

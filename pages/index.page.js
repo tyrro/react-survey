@@ -15,7 +15,7 @@ export default function Home() {
   });
 
   if (!user || !user.isLoggedIn) {
-    return <div>Loading</div>;
+    return null;
   }
 
   return (
