@@ -1,6 +1,6 @@
 export const skeletonSelector = 'span.react-loading-skeleton';
 
-export function getLoadingScreen() {
+export function getLoadingSkeleton() {
   const skeleton = document.querySelector(skeletonSelector);
   if (!skeleton) {
     throw new Error('Could not find skeleton.');

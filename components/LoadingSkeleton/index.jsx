@@ -6,13 +6,7 @@ export const BASE_COLOR = '#313236';
 export const HIGHLIGHT_COLOR = '#49494D';
 export const BORDER_RADIUS = 12;
 
-export const loadingScreenTestIds = {
-  base: 'loading-screen',
-  skeleton: 'loading-screen__skeleton',
-  skeletonTheme: 'loading-screen__skeleton-theme',
-};
-
-const LoadingScreen = ({ width, height, circle = false, className }) => {
+const LoadingSkeleton = ({ width, height, circle = false, className }) => {
   return (
     <SkeletonTheme
       baseColor={BASE_COLOR}
@@ -26,11 +20,11 @@ const LoadingScreen = ({ width, height, circle = false, className }) => {
   );
 };
 
-LoadingScreen.propTypes = {
+LoadingSkeleton.propTypes = {
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   circle: PropTypes.bool,
   className: PropTypes.string,
 };
 
-export default LoadingScreen;
+export default LoadingSkeleton;

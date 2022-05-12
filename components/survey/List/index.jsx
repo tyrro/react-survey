@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 
 import SurveyCard from '@/components/survey/Card';
 import EmptySurveyCard from '@/components/survey/EmptyCard';
+import LoadingSkeleton from '@/components/LoadingSkeleton';
 
 import useUser from 'hooks/useUser';
 import useSurveys from 'hooks/useSurveys';
@@ -14,7 +15,6 @@ import { formatDate } from 'helpers/date';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './index.module.scss';
-import LoadingScreen from '@/components/LoadingScreen';
 
 export const surveyListTestIds = {
   base: 'survey-list',
@@ -54,11 +54,7 @@ const SurveyList = ({ setBackgroundImagePath }) => {
 
   const renderSurveyCard = survey => {
     if (!survey) {
-      return (
-        <div key={currentSurveyOffset}>
-          <SurveyCard isSurveyLoading={true} />
-        </div>
-      );
+      return <div key={currentSurveyOffset}></div>;
     }
 
     return (
@@ -96,10 +92,10 @@ const SurveyList = ({ setBackgroundImagePath }) => {
   return (
     <div className="w-[313px] md:w-[419px] lg:w-[704px] m-auto">
       <div className="font-extrabold text-white text-base-xs uppercase mb-1" data-test-id={surveyListTestIds.date}>
-        {isSurveyLoading ? <LoadingScreen width={117} height={18} className="mb-1" /> : formatDate(date)}
+        {isSurveyLoading ? <LoadingSkeleton width={117} height={18} className="mb-1" /> : formatDate(date)}
       </div>
       <div className="font-extrabold text-white text-base-xxxxl mb-8" data-test-id={surveyListTestIds.text}>
-        {isSurveyLoading ? <LoadingScreen width={90} height={18} /> : 'Today'}
+        {isSurveyLoading ? <LoadingSkeleton width={90} height={18} /> : 'Today'}
       </div>
       {isSurveyLoading ? (
         <SurveyCard isSurveyLoading={true} />

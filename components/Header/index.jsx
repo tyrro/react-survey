@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { useRootClose } from 'react-overlays';
 
-import LoadingScreen from '@/components/LoadingScreen';
+import LoadingSkeleton from '@/components/LoadingSkeleton';
 import Image from '@/components/Image';
 import Sidebar from '@/components/Sidebar';
 import logo from '@/public/logo-small.svg';
@@ -30,11 +30,15 @@ const Header = () => {
   return (
     <div className="flex justify-between mb-[42px]" data-test-id={headerTestIds.base}>
       <div className="h-8 ml-8 mt-[34px]">
-        {!profile ? <LoadingScreen width={117} height={18} /> : <Image src={logo} alt="logo" data-test-id={headerTestIds.logo} />}
+        {!profile ? (
+          <LoadingSkeleton width={117} height={18} />
+        ) : (
+          <Image src={logo} alt="logo" data-test-id={headerTestIds.logo} />
+        )}
       </div>
       <div className="w-9 h-9 mt-8 mr-8 z-[1] cursor-pointer" onClick={() => setIsSidebarOpen(true)}>
         {!profile ? (
-          <LoadingScreen height={36} circle={true} />
+          <LoadingSkeleton height={36} circle={true} />
         ) : (
           <Image
             className="rounded-full"

@@ -1,14 +1,14 @@
 import { render } from '@testing-library/react';
 
-import LoadingScreen, { BASE_COLOR, HIGHLIGHT_COLOR, BORDER_RADIUS } from '.';
+import LoadingSkeleton, { BASE_COLOR, HIGHLIGHT_COLOR, BORDER_RADIUS } from '.';
 
-import { getLoadingScreen } from 'tests/loadingScreen';
+import { getLoadingSkeleton } from 'tests/loadingSkeleton';
 
-describe('LoadingScreen', () => {
+describe('LoadingSkeleton', () => {
   it('renders a skeleton theme with the provided values', () => {
-    render(<LoadingScreen />);
+    render(<LoadingSkeleton />);
 
-    const skeleton = getLoadingScreen();
+    const skeleton = getLoadingSkeleton();
 
     expect(skeleton.style.getPropertyValue('--base-color')).toBe(BASE_COLOR);
     expect(skeleton.style.getPropertyValue('--base-color')).toBe(BASE_COLOR);
@@ -16,10 +16,10 @@ describe('LoadingScreen', () => {
     expect(skeleton.style.getPropertyValue('border-radius')).toBe(`${BORDER_RADIUS}px`);
   });
 
-  it('renders a loading screen skeleton', () => {
-    render(<LoadingScreen circle />);
+  it('renders a loading skeleton', () => {
+    render(<LoadingSkeleton circle />);
 
-    const skeleton = getLoadingScreen();
+    const skeleton = getLoadingSkeleton();
 
     expect(skeleton).toHaveStyle({ borderRadius: '50%' });
   });

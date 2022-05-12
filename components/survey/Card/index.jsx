@@ -2,7 +2,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import requiredIf from 'react-required-if';
 
-import LoadingScreen from '@/components/LoadingScreen';
+import LoadingSkeleton from '@/components/LoadingSkeleton';
 import Image from '@/components/Image';
 import angleRightIcon from '@/public/angle-right.svg';
 
@@ -20,7 +20,7 @@ const SurveyCard = ({ isSurveyLoading = false, surveyId, title, description, cov
   <div data-test-id={surveyCardTestIds.base}>
     <div className="relative w-full h-[302px] mb-8">
       {isSurveyLoading ? (
-        <LoadingScreen className="h-full" />
+        <LoadingSkeleton className="h-full" />
       ) : (
         <Image
           className="rounded-xl"
@@ -37,7 +37,7 @@ const SurveyCard = ({ isSurveyLoading = false, surveyId, title, description, cov
         <div className="font-extrabold text-white text-base-xxl truncate mb-2" data-test-id={surveyCardTestIds.title}>
           {isSurveyLoading ? (
             <div className="w-[280px] md:w-[300px] lg:w-[318px]">
-              <LoadingScreen height={18} />
+              <LoadingSkeleton height={18} />
             </div>
           ) : (
             title
@@ -46,7 +46,7 @@ const SurveyCard = ({ isSurveyLoading = false, surveyId, title, description, cov
         <div className="text-white/60 text-base-large" data-test-id={surveyCardTestIds.description}>
           {isSurveyLoading ? (
             <div className="w-[244px] md:w-[262px] lg:w-[280px]">
-              <LoadingScreen height={18} />
+              <LoadingSkeleton height={18} />
             </div>
           ) : (
             description
@@ -55,7 +55,7 @@ const SurveyCard = ({ isSurveyLoading = false, surveyId, title, description, cov
       </div>
       <div className="w-14 h-14" data-test-id={surveyCardTestIds.angleRightIcon}>
         {isSurveyLoading ? (
-          <LoadingScreen height={56} circle={true} />
+          <LoadingSkeleton height={56} circle={true} />
         ) : (
           <Link href={`/surveys/${surveyId}`}>
             <a>
