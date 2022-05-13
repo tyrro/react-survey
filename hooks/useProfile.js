@@ -1,10 +1,9 @@
 import useSWR from 'swr';
 
 import profileAdapter from 'adapters/Profile';
-import { authorizationHeader } from 'adapters/Base';
 
 const fetcher = async () => {
-  const response = await profileAdapter.fetchUser(authorizationHeader());
+  const response = await profileAdapter.fetchUser();
   const { name, avatarUrl } = response?.data?.attributes;
 
   return { name, avatarUrl };

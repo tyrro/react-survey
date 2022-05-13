@@ -1,6 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import SurveySubmit, { surveySubmitTestIds } from '.';
+
+import surveyAdapter from 'adapters/Survey';
 
 describe('SurveySubmit', () => {
   const props = {
@@ -22,12 +24,21 @@ describe('SurveySubmit', () => {
   });
 
   describe('given the submit button is clicked', () => {
-    it('calls setIsSurveySubmitted function', () => {
+    it('calls setIsSurveySubmitted function', async () => {
+      const surveyResponse = {
+        surveyId: props.surveyId,
+        questions: props.surveyQuestionsWithAnswers,
+      };
+
+      const submitSurveySpy = jest.spyOn(surveyAdapter, 'submitSurvey').mockResolvedValue('success');
       const submitButton = screen.getByTestId(surveySubmitTestIds.base);
 
       submitButton.click();
 
-      expect(props.setIsSurveySubmitted).toBeCalledWith(true);
+      expect(submitSurveySpy).toBeCalledWith(surveyResponse);
+      await waitFor(() => {
+        expect(props.setIsSurveySubmitted).toBeCalledWith(true);
+      });
     });
   });
 });
