@@ -6,11 +6,10 @@ describe('Image', () => {
   it('renders the provided image', () => {
     const props = {
       src: '/image.svg',
-      alt: 'image',
       'data-test-id': 'image',
     };
 
-    render(<Image {...props} />);
+    render(<Image {...props} alt="image" />);
 
     const image = screen.getByTestId(props['data-test-id']);
 

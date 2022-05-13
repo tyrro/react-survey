@@ -11,7 +11,7 @@ describe('Rating', () => {
         id: '1',
       },
     ],
-    setSurveyResponse: jest.fn(),
+    setSurveyQuestionsWithAnswers: jest.fn(),
   };
 
   beforeEach(() => {

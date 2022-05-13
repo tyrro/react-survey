@@ -16,12 +16,12 @@ export const questionDetailsTestIds = {
   base: 'question-details',
   serial: 'question-details__serial',
   text: 'question-details__text',
-  angleRightIcon: 'question-details__next',
+  angleRightIcon: 'question-details__icon-next',
 };
 
 const QuestionDetails = ({ setBackgroundImagePath }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [surveyResponse, setSurveyResponse] = useState([]);
+  const [surveyQuestionsWithAnswers, setSurveyQuestionsWithAnswers] = useState([]);
   const [isSurveySubmitted, setIsSurveySubmitted] = useState(false);
 
   const router = useRouter();
@@ -56,6 +56,28 @@ const QuestionDetails = ({ setBackgroundImagePath }) => {
     return <div>TODO: Show a thank you message</div>;
   }
 
+  const renderQuestionComponent = () =>
+    QuestionComponent && <QuestionComponent {...currentQuestion} setSurveyQuestionsWithAnswers={setSurveyQuestionsWithAnswers} />;
+
+  const renderNextQuestion = () =>
+    isLastQuestion ? (
+      <SurveySubmit
+        surveyId={surveyId}
+        surveyQuestionsWithAnswers={surveyQuestionsWithAnswers}
+        setIsSurveySubmitted={setIsSurveySubmitted}
+      />
+    ) : (
+      <div className="w-14 h-14 fixed bottom-0 right-0 mb-8 mr-8">
+        <Image
+          className="cursor-pointer"
+          src={angleRightIcon}
+          alt="next question"
+          data-test-id={questionDetailsTestIds.angleRightIcon}
+          onClick={() => setCurrentQuestionIndex(currentIndex => currentIndex + 1)}
+        />
+      </div>
+    );
+
   return (
     <>
       <div className="w-7 h-[30px] ml-auto mr-8 pt-8">
@@ -71,22 +93,9 @@ const QuestionDetails = ({ setBackgroundImagePath }) => {
         <div className="font-extrabold text-white text-base-xxxxl" data-test-id={questionDetailsTestIds.text}>
           {currentQuestion.text}
         </div>
-        {QuestionComponent && <QuestionComponent {...currentQuestion} setSurveyResponse={setSurveyResponse} />}
+        {renderQuestionComponent()}
       </div>
-
-      {isLastQuestion ? (
-        <SurveySubmit surveyId={surveyId} surveyResponse={surveyResponse} setIsSurveySubmitted={setIsSurveySubmitted} />
-      ) : (
-        <div className="w-14 h-14 fixed bottom-0 right-0 mb-8 mr-8">
-          <Image
-            className="cursor-pointer"
-            src={angleRightIcon}
-            alt="next question"
-            data-test-id={questionDetailsTestIds.angleRightIcon}
-            onClick={() => setCurrentQuestionIndex(currentIndex => currentIndex + 1)}
-          />
-        </div>
-      )}
+      {renderNextQuestion()}
     </>
   );
 };

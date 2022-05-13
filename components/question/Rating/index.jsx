@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
-import { buildSurveyResponse } from '../Details/buildSurveyResponse';
+import { buildSurveyQuestionsWithAnswers } from '../Details/buildSurveyQuestionsWithAnswers';
 import { emojiMapper } from './emojiMapper';
 
 export const ratingTestIds = {
@@ -10,7 +10,7 @@ export const ratingTestIds = {
   emoji: 'rating__emoji',
 };
 
-const Rating = ({ id, type, answers, setSurveyResponse }) => {
+const Rating = ({ id, type, answers, setSurveyQuestionsWithAnswers }) => {
   const [currentRating, setCurrentRating] = useState();
   const emoji = emojiMapper[type];
   const totalEmojis = [...Array(answers.length)];
@@ -20,11 +20,11 @@ const Rating = ({ id, type, answers, setSurveyResponse }) => {
   }, [id]);
 
   const onRatingChange = index => {
-    const newSurveyResponse = buildSurveyResponse(id, answers[index].id);
+    const surveyQuestionsWithAnswers = buildSurveyQuestionsWithAnswers(id, answers[index].id);
     setCurrentRating(index);
-    setSurveyResponse(surveyResponse => {
-      surveyResponse = surveyResponse.filter(response => response.id !== id);
-      return [...surveyResponse, newSurveyResponse];
+    setSurveyQuestionsWithAnswers(surveyQuestionWithAnswer => {
+      surveyQuestionWithAnswer = surveyQuestionWithAnswer.filter(response => response.id !== id);
+      return [...surveyQuestionWithAnswer, surveyQuestionsWithAnswers];
     });
   };
 
@@ -50,7 +50,7 @@ Rating.propTypes = {
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   answers: PropTypes.array.isRequired,
-  setSurveyResponse: PropTypes.func.isRequired,
+  setSurveyQuestionsWithAnswers: PropTypes.func.isRequired,
 };
 
 export default Rating;

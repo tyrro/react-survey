@@ -6,7 +6,7 @@ export const surveySubmitTestIds = {
   base: 'survey-submit',
 };
 
-const SurveySubmit = ({ surveyId, surveyResponse, setIsSurveySubmitted }) => {
+const SurveySubmit = ({ surveyId, surveyQuestionsWithAnswers, setIsSurveySubmitted }) => {
   return (
     <div className="w-[120px] fixed bottom-0 right-0 mb-8 mr-8">
       <Button type="submit" size="large" data-test-id={surveySubmitTestIds.base} onClick={() => setIsSurveySubmitted(true)}>
@@ -18,7 +18,7 @@ const SurveySubmit = ({ surveyId, surveyResponse, setIsSurveySubmitted }) => {
 
 SurveySubmit.propTypes = {
   surveyId: PropTypes.string.isRequired,
-  surveyResponse: PropTypes.array.isRequired,
+  surveyQuestionsWithAnswers: PropTypes.array.isRequired,
   setIsSurveySubmitted: PropTypes.func.isRequired,
 };
 

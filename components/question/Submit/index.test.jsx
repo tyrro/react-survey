@@ -5,7 +5,7 @@ import SurveySubmit, { surveySubmitTestIds } from '.';
 describe('SurveySubmit', () => {
   const props = {
     surveyId: '1',
-    surveyResponse: [],
+    surveyQuestionsWithAnswers: [],
     setIsSurveySubmitted: jest.fn(),
   };
 
