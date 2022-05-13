@@ -31,8 +31,10 @@ const mockUseSurvey = {
 
 const mockQuestions = [
   {
+    id: '1',
     type: 'intro',
     text: surveyIntroText,
+    answers: [],
   },
 ];
 
@@ -59,6 +61,7 @@ describe('SurveyDetails', () => {
 
   it('renders the title', () => {
     const title = screen.getByTestId(surveyDetailsTestIds.title);
+
     expect(title).toBeVisible();
     expect(title).toHaveTextContent(surveyTitle);
   });

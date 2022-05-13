@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 import { buildSurveyResponse } from '../Details/buildSurveyResponse';
@@ -9,7 +10,7 @@ export const ratingTestIds = {
   emoji: 'rating__emoji',
 };
 
-const Rating = ({ type, id, answers, setSurveyResponse }) => {
+const Rating = ({ id, type, answers, setSurveyResponse }) => {
   const [currentRating, setCurrentRating] = useState();
   const emoji = emojiMapper[type];
   const totalEmojis = [...Array(answers.length)];
@@ -43,6 +44,13 @@ const Rating = ({ type, id, answers, setSurveyResponse }) => {
       </ul>
     </div>
   );
+};
+
+Rating.propTypes = {
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  answers: PropTypes.array.isRequired,
+  setSurveyResponse: PropTypes.func.isRequired,
 };
 
 export default Rating;

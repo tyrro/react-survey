@@ -16,12 +16,14 @@ export const questionDetailsTestIds = {
   base: 'question-details',
   serial: 'question-details__serial',
   text: 'question-details__text',
-  next: 'question-details__next',
+  angleRightIcon: 'question-details__next',
 };
 
 const QuestionDetails = ({ setBackgroundImagePath }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [surveyResponse, setSurveyResponse] = useState([]);
+  const [isSurveySubmitted, setIsSurveySubmitted] = useState(false);
+
   const router = useRouter();
   const surveyId = router.query.id;
   const { user } = useUser();
@@ -33,6 +35,12 @@ const QuestionDetails = ({ setBackgroundImagePath }) => {
     }
   }, [survey, setBackgroundImagePath]);
 
+  useEffect(() => {
+    if (isSurveySubmitted) {
+      setBackgroundImagePath('');
+    }
+  }, [isSurveySubmitted, setBackgroundImagePath]);
+
   if (!survey) {
     return null;
   }
@@ -43,6 +51,10 @@ const QuestionDetails = ({ setBackgroundImagePath }) => {
   const currentQuestionSerial = `${currentQuestionIndex + 1} / ${surveyQuestions.length}`;
   const isLastQuestion = currentQuestionIndex + 1 === surveyQuestions.length;
   const QuestionComponent = getQuestionComponentFromQuestionType(currentQuestion.type);
+
+  if (isSurveySubmitted) {
+    return <div>TODO: Show a thank you message</div>;
+  }
 
   return (
     <>
@@ -63,14 +75,14 @@ const QuestionDetails = ({ setBackgroundImagePath }) => {
       </div>
 
       {isLastQuestion ? (
-        <SurveySubmit surveyId={surveyId} surveyResponse={surveyResponse} />
+        <SurveySubmit surveyId={surveyId} surveyResponse={surveyResponse} setIsSurveySubmitted={setIsSurveySubmitted} />
       ) : (
         <div className="w-14 h-14 fixed bottom-0 right-0 mb-8 mr-8">
           <Image
             className="cursor-pointer"
             src={angleRightIcon}
             alt="next question"
-            data-test-id={questionDetailsTestIds.next}
+            data-test-id={questionDetailsTestIds.angleRightIcon}
             onClick={() => setCurrentQuestionIndex(currentIndex => currentIndex + 1)}
           />
         </div>
