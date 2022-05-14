@@ -59,7 +59,7 @@ const QuestionDetails = ({ setBackgroundImagePath }) => {
   const renderQuestionComponent = () =>
     QuestionComponent && <QuestionComponent {...currentQuestion} setSurveyQuestionsWithAnswers={setSurveyQuestionsWithAnswers} />;
 
-  const renderNextQuestion = () =>
+  const goToNextQuestion = () =>
     isLastQuestion ? (
       <SurveySubmit
         surveyId={surveyId}
@@ -95,7 +95,7 @@ const QuestionDetails = ({ setBackgroundImagePath }) => {
         </div>
         {renderQuestionComponent()}
       </div>
-      {renderNextQuestion()}
+      {goToNextQuestion()}
     </>
   );
 };

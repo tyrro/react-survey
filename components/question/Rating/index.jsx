@@ -11,12 +11,12 @@ export const ratingTestIds = {
 };
 
 const Rating = ({ id, type, answers, setSurveyQuestionsWithAnswers }) => {
-  const [currentRating, setCurrentRating] = useState();
+  const [currentRating, setCurrentRating] = useState(-1);
   const emoji = emojiMapper[type];
   const totalEmojis = [...Array(answers.length)];
 
   useEffect(() => {
-    setCurrentRating();
+    setCurrentRating(-1);
   }, [id]);
 
   const onRatingChange = index => {
