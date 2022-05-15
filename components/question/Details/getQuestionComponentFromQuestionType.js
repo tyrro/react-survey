@@ -1,3 +1,4 @@
+import Dropdown from '../Dropdown';
 import Rating from '../Rating';
 import Textfield from '../Textfield';
 
@@ -8,6 +9,7 @@ export const questionComponentMapper = {
   money: Rating,
   thumb: Rating,
   textfield: Textfield,
+  dropdown: Dropdown,
 };
 
 export const getQuestionComponentFromQuestionType = questionType => {
