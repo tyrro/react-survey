@@ -22,9 +22,11 @@ const Rating = ({ id, type, answers, setSurveyQuestionsWithAnswers }) => {
   const onRatingChange = index => {
     const surveyQuestionsWithAnswers = buildSurveyQuestionsWithAnswers(id, answers[index].id);
     setCurrentRating(index);
-    setSurveyQuestionsWithAnswers(surveyQuestionWithAnswer => {
-      surveyQuestionWithAnswer = surveyQuestionWithAnswer.filter(response => response.id !== id);
-      return [...surveyQuestionWithAnswer, surveyQuestionsWithAnswers];
+    setSurveyQuestionsWithAnswers(prevSurveyQuestionWithAnswer => {
+      let newSurveyQuestionWithAnswer = prevSurveyQuestionWithAnswer.slice();
+      newSurveyQuestionWithAnswer = newSurveyQuestionWithAnswer.filter(response => response.id !== id);
+
+      return [...newSurveyQuestionWithAnswer, surveyQuestionsWithAnswers];
     });
   };
 
