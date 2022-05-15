@@ -1,5 +1,6 @@
 import Rating from '../Rating';
 import Slider from '../Slider';
+import Textfield from '../Textfield';
 
 export const questionComponentMapper = {
   heart: Rating,
@@ -8,6 +9,7 @@ export const questionComponentMapper = {
   money: Rating,
   thumb: Rating,
   slider: Slider,
+  textfield: Textfield,
 };
 
 export const getQuestionComponentFromQuestionType = questionType => {
