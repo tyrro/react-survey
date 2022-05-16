@@ -8,7 +8,7 @@ const Input = ({ id, className, ...attributes }) => {
 };
 
 Input.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  id: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
 
