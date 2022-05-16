@@ -1,0 +1,11 @@
+.slider {
+  @apply h-0.5 w-full appearance-none; }
+
+.slider::-webkit-slider-thumb {
+  @apply bg-white w-7 h-7 rounded-full appearance-none; }
+
+.slider::-moz-range-thumb {
+  @apply bg-white w-7 h-7 rounded-full appearance-none; }
+
+.slider::-ms-thumb {
+  @apply bg-white w-7 h-7 rounded-full appearance-none; }
