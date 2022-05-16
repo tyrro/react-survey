@@ -61,14 +61,18 @@ const QuestionDetails = ({ setBackgroundImagePath }) => {
       <QuestionComponent {...currentQuestion} survey={survey} setSurveyQuestionsWithAnswers={setSurveyQuestionsWithAnswers} />
     );
 
-  const goToNextQuestion = () =>
-    isLastQuestion ? (
-      <SurveySubmit
-        surveyId={surveyId}
-        surveyQuestionsWithAnswers={surveyQuestionsWithAnswers}
-        setIsSurveySubmitted={setIsSurveySubmitted}
-      />
-    ) : (
+  const goToNextQuestion = () => {
+    if (isLastQuestion) {
+      return (
+        <SurveySubmit
+          surveyId={surveyId}
+          surveyQuestionsWithAnswers={surveyQuestionsWithAnswers}
+          setIsSurveySubmitted={setIsSurveySubmitted}
+        />
+      );
+    }
+
+    return (
       <div className="w-14 h-14 fixed bottom-0 right-0 mb-8 mr-8">
         <Image
           className="cursor-pointer"
@@ -79,6 +83,7 @@ const QuestionDetails = ({ setBackgroundImagePath }) => {
         />
       </div>
     );
+  };
 
   return (
     <>
