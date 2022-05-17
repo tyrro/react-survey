@@ -1,0 +1,15 @@
+.rangeSlider {
+  @apply h-0.5 w-full appearance-none;
+}
+
+.rangeSlider::-webkit-slider-thumb {
+  @apply bg-white w-7 h-7 rounded-full appearance-none;
+}
+
+.rangeSlider::-moz-range-thumb {
+  @apply bg-white w-7 h-7 rounded-full appearance-none;
+}
+
+.rangeSlider::-ms-thumb {
+  @apply bg-white w-7 h-7 rounded-full appearance-none;
+}

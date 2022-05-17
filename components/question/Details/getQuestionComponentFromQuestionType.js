@@ -1,5 +1,5 @@
 import Rating from '../Rating';
-import Slider from '../Slider';
+import RangeSlider from '../RangeSlider';
 import Textfield from '../Textfield';
 
 export const questionComponentMapper = {
@@ -8,7 +8,7 @@ export const questionComponentMapper = {
   star: Rating,
   money: Rating,
   thumb: Rating,
-  slider: Slider,
+  slider: RangeSlider,
   textfield: Textfield,
 };
 

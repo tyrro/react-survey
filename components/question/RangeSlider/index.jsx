@@ -7,12 +7,12 @@ import styles from './index.module.scss';
 export const ACTIVE_SLIDER_BACKGROUND = 'rgba(255, 255, 255)';
 export const INACTIVE_SLIDER_BACKGROUND = 'rgba(255, 255, 255, 0.18)';
 
-export const sliderTestIds = {
-  base: 'slider',
-  input: 'slider__input',
+export const rangeSliderTestIds = {
+  base: 'range-slider',
+  input: 'range-slider__input',
 };
 
-const Slider = ({ id, answers, setSurveyQuestionsWithAnswers }) => {
+const RangeSlider = ({ id, answers, setSurveyQuestionsWithAnswers }) => {
   const [currentValue, setCurrentValue] = useState(-1);
   const minValue = 0;
   const maxValue = answers.length - 1;
@@ -22,7 +22,7 @@ const Slider = ({ id, answers, setSurveyQuestionsWithAnswers }) => {
     setCurrentValue(-1);
   }, [id]);
 
-  const onSliderChange = value => {
+  const onRangeValueChange = value => {
     const surveyQuestionsWithAnswers = buildSurveyQuestionsWithAnswers(id, answers[value].id);
     setCurrentValue(value);
     setSurveyQuestionsWithAnswers(prevSurveyQuestionWithAnswer => {
@@ -38,25 +38,25 @@ const Slider = ({ id, answers, setSurveyQuestionsWithAnswers }) => {
   };
 
   return (
-    <div className="h-14 flex items-center mt-16" data-test-id={sliderTestIds.base}>
+    <div className="h-14 flex items-center mt-16" data-test-id={rangeSliderTestIds.base}>
       <input
         type="range"
         min={minValue}
         max={maxValue}
         value={currentValue}
-        className={styles.slider}
-        onChange={event => onSliderChange(event.target.value)}
+        className={styles.rangeSlider}
+        onChange={event => onRangeValueChange(event.target.value)}
         style={inputStyle}
-        data-test-id={sliderTestIds.input}
+        data-test-id={rangeSliderTestIds.input}
       />
     </div>
   );
 };
 
-Slider.propTypes = {
+RangeSlider.propTypes = {
   id: PropTypes.string.isRequired,
   answers: PropTypes.array.isRequired,
   setSurveyQuestionsWithAnswers: PropTypes.func.isRequired,
 };
 
-export default Slider;
+export default RangeSlider;
