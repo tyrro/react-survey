@@ -51,7 +51,7 @@ const Header = () => {
           />
         )}
       </div>
-      {isSidebarOpen && <Sidebar headerRef={ref} name={profile.name} />}
+      {isSidebarOpen && profile && <Sidebar headerRef={ref} name={profile.name} />}
     </div>
   );
 };
