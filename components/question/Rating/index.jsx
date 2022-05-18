@@ -32,10 +32,10 @@ const Rating = ({ id, type, answers, setSurveyQuestionsWithAnswers }) => {
 
   return (
     <div className="w-[215px] m-auto mt-8" data-test-id={ratingTestIds.base}>
-      <ul className="flex">
+      <ul className="flex justify-between">
         {totalEmojis.map((_key, index) => (
           <li
-            className={classNames('cursor-pointer text-base-xxxl tracking-[16px]', { 'opacity-50': index > currentRating })}
+            className={classNames('cursor-pointer text-base-xxxl', { 'opacity-50': index > currentRating })}
             key={index}
             onClick={() => onRatingChange(index)}
             data-test-id={ratingTestIds.emoji}
