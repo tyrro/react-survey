@@ -9,6 +9,9 @@ describe('NetPromotingScore', () => {
       {
         id: '1',
       },
+      {
+        id: '2',
+      },
     ],
     setSurveyQuestionsWithAnswers: jest.fn(),
   };
@@ -23,10 +26,10 @@ describe('NetPromotingScore', () => {
     expect(netPromotingScore).toBeVisible();
   });
 
-  it('renders scores equal to the length of the answers', () => {
+  it('renders scores equal to one less than the length of the answers', () => {
     const totalScore = screen.getAllByTestId(netPromotingScoreTestIds.score);
 
-    expect(totalScore).toHaveLength(props.answers.length);
+    expect(totalScore).toHaveLength(props.answers.length - 1);
   });
 
   it('renders an unlikely score text', () => {

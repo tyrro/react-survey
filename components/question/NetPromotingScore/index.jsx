@@ -5,22 +5,22 @@ import { useEffect, useState } from 'react';
 import { buildSurveyQuestionsWithAnswers } from '../Details/buildSurveyQuestionsWithAnswers';
 
 export const netPromotingScoreTestIds = {
-  base: 'rating',
-  score: 'rating__score',
-  unlikelyText: 'rating__unlikely-text',
-  likelyText: 'rating__likely-text',
+  base: 'nps',
+  score: 'nps__score',
+  unlikelyText: 'nps__unlikely-text',
+  likelyText: 'nps__likely-text',
 };
 
-const NetPromotingScore = ({ id, answers, setSurveyQuestionsWithAnswers }) => {
+const NetPromotingScore = ({ id, answers, setSurveyQuestionsWithAnswers, helpText }) => {
   const [currentScore, setCurrentScore] = useState(-1);
-  const totalScore = [...Array(answers.length)];
+  const totalScore = [...Array(answers.length - 1)];
 
   useEffect(() => {
     setCurrentScore(-1);
   }, [id]);
 
   const OnScoreChange = index => {
-    const surveyQuestionsWithAnswers = buildSurveyQuestionsWithAnswers(id, answers[index].id);
+    const surveyQuestionsWithAnswers = buildSurveyQuestionsWithAnswers(id, answers[index + 1].id);
     setCurrentScore(index);
     setSurveyQuestionsWithAnswers(surveyQuestionWithAnswer => {
       surveyQuestionWithAnswer = surveyQuestionWithAnswer.filter(response => response.id !== id);
@@ -29,12 +29,12 @@ const NetPromotingScore = ({ id, answers, setSurveyQuestionsWithAnswers }) => {
   };
 
   return (
-    <div className="w-[363px] m-auto mt-16" data-test-id={netPromotingScoreTestIds.base}>
-      <ul className="h-14 flex justify-center mb-[15.5px]">
+    <div className="w-[335px] m-auto mt-16" data-test-id={netPromotingScoreTestIds.base}>
+      <ul aria-label={helpText} className="h-14 flex justify-center mb-[15px]">
         {totalScore.map((_key, index) => (
           <li
             className={classNames(
-              'w-[33px] h-full flex justify-center items-center cursor-pointer font-extrabold text-white text-base-xl border-[0.5px] border-white first:rounded-l-[10px] last:rounded-r-[10px]',
+              'w-full h-full flex justify-center items-center cursor-pointer font-extrabold text-white text-base-xl border-[0.5px] border-white first:rounded-l-[10px] last:rounded-r-[10px]',
               { 'opacity-50': index > currentScore },
             )}
             key={index}
@@ -61,6 +61,7 @@ NetPromotingScore.propTypes = {
   id: PropTypes.string.isRequired,
   answers: PropTypes.array.isRequired,
   setSurveyQuestionsWithAnswers: PropTypes.func.isRequired,
+  helpText: PropTypes.string,
 };
 
 export default NetPromotingScore;
