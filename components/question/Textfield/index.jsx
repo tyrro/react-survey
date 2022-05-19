@@ -11,11 +11,11 @@ export const textfieldTestIds = {
   input: 'textfield__input',
 };
 
-const Textfield = ({ id, survey, answers, setSurveyQuestionsWithAnswers }) => {
-  const [textFieldData, setTextFieldData] = useState([]);
+const Textfield = ({ id, survey, answers, setSurveyQuestionsWithAnswers, helpText }) => {
+  const [textfieldData, setTextfieldData] = useState([]);
 
   useEffect(() => {
-    setTextFieldData(buildTextfieldData(survey, answers));
+    setTextfieldData(buildTextfieldData(survey, answers));
   }, [id, survey, answers]);
 
   const onInputValueChange = (value, answerId) => {
@@ -42,15 +42,15 @@ const Textfield = ({ id, survey, answers, setSurveyQuestionsWithAnswers }) => {
   };
 
   return (
-    <div className="mt-16" data-test-id={textfieldTestIds.base}>
-      {textFieldData.map(textField => (
+    <div className="mt-16" aria-label={helpText} data-test-id={textfieldTestIds.base}>
+      {textfieldData.map(textfield => (
         <Input
-          key={textField.id}
-          id={textField.id}
+          key={textfield.id}
+          id={textfield.id}
           data-test-id={textfieldTestIds.input}
           className="h-14 mb-4 last:mb-0"
-          placeholder={textField.placeholder}
-          onChange={event => onInputValueChange(event.target.value, textField.id)}
+          placeholder={textfield.placeholder}
+          onChange={event => onInputValueChange(event.target.value, textfield.id)}
         />
       ))}
     </div>
@@ -62,6 +62,7 @@ Textfield.propTypes = {
   survey: PropTypes.object.isRequired,
   answers: PropTypes.array.isRequired,
   setSurveyQuestionsWithAnswers: PropTypes.func.isRequired,
+  helpText: PropTypes.string,
 };
 
 export default Textfield;
