@@ -25,14 +25,12 @@ const Textarea = ({ id, answers, setSurveyQuestionsWithAnswers }) => {
   };
 
   return (
-    <div className="h-[112px]" data-test-id={textareaTestIds.base}>
-      <textarea
-        className="w-full h-full bg-dark text-white text-base-large rounded-xl px-3 pt-[19px] pb-[15px] mt-16 focus:outline-none focus:shadow-none"
-        value={inputValue}
-        onChange={event => onInputValueChange(event.target.value)}
-        data-test-id={textareaTestIds.inputField}
-      />
-    </div>
+    <textarea
+      className="w-full h-[112px] bg-dark text-white text-base-large rounded-xl px-3 pt-[19px] pb-[15px] mt-16 focus:outline-none focus:shadow-none"
+      value={inputValue}
+      onChange={event => onInputValueChange(event.target.value)}
+      data-test-id={textareaTestIds.inputField}
+    />
   );
 };
 

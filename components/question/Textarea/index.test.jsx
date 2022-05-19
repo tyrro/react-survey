@@ -17,12 +17,6 @@ describe('Textarea', () => {
     render(<Textarea {...props} />);
   });
 
-  it('renders a Textarea component', () => {
-    const textarea = screen.getByTestId(textareaTestIds.base);
-
-    expect(textarea).toBeVisible();
-  });
-
   it('shows user input texts in the box', () => {
     const inputText = 'input';
     const inputField = screen.getByTestId(textareaTestIds.inputField);
