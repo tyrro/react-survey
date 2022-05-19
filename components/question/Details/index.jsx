@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Image from '@/components/Image';
 import SurveyQuit from '@/components/survey/Quit';
 import SurveySubmit from '@/components/question/Submit';
-import SurveyOutro from '@/components/question/Outro';
+import SurveyOutro from '@/components/survey/Outro';
 import angleRightIcon from '@/public/angle-right.svg';
 import { getQuestionsFromSurvey } from '@/components/survey/Details/getQuestionsFromSurvey';
 import { getQuestionComponentFromQuestionType } from './getQuestionComponentFromQuestionType';

@@ -38,7 +38,7 @@ describe('BaseAdapter', () => {
       jest.clearAllMocks();
     });
 
-    it('returns the headers that includes the access token', () => {
+    it('returns the header that includes the access token', () => {
       const expectedHeader = {
         Authorization: `${mockTokenType} ${mockAccessToken}`,
       };
