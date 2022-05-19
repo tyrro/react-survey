@@ -11,7 +11,7 @@ export const textfieldTestIds = {
   input: 'textfield__input',
 };
 
-const Textfield = ({ id, survey, answers, setSurveyQuestionsWithAnswers, helpText }) => {
+const Textfield = ({ id, survey, answers, setSurveyQuestionsWithAnswers }) => {
   const [textfieldData, setTextfieldData] = useState([]);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Textfield = ({ id, survey, answers, setSurveyQuestionsWithAnswers, helpTex
   };
 
   return (
-    <div className="mt-16" aria-label={helpText} data-test-id={textfieldTestIds.base}>
+    <div className="mt-16" data-test-id={textfieldTestIds.base}>
       {textfieldData.map(textfield => (
         <Input
           key={textfield.id}
@@ -62,7 +62,6 @@ Textfield.propTypes = {
   survey: PropTypes.object.isRequired,
   answers: PropTypes.array.isRequired,
   setSurveyQuestionsWithAnswers: PropTypes.func.isRequired,
-  helpText: PropTypes.string,
 };
 
 export default Textfield;

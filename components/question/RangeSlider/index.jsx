@@ -12,7 +12,7 @@ export const rangeSliderTestIds = {
   input: 'range-slider__input',
 };
 
-const RangeSlider = ({ id, answers, setSurveyQuestionsWithAnswers }) => {
+const RangeSlider = ({ id, answers, setSurveyQuestionsWithAnswers, helpText }) => {
   const [currentValue, setCurrentValue] = useState(-1);
   const minValue = 0;
   const maxValue = answers.length - 1;
@@ -38,7 +38,7 @@ const RangeSlider = ({ id, answers, setSurveyQuestionsWithAnswers }) => {
   };
 
   return (
-    <div className="h-14 flex items-center mt-16" data-test-id={rangeSliderTestIds.base}>
+    <div className="h-14 flex items-center mt-16" aria-label={helpText} data-test-id={rangeSliderTestIds.base}>
       <input
         type="range"
         min={minValue}
@@ -57,6 +57,7 @@ RangeSlider.propTypes = {
   id: PropTypes.string.isRequired,
   answers: PropTypes.array.isRequired,
   setSurveyQuestionsWithAnswers: PropTypes.func.isRequired,
+  helpText: PropTypes.string,
 };
 
 export default RangeSlider;
