@@ -5,8 +5,10 @@ export const dropdownStyles = {
   }),
   control: provided => ({
     ...provided,
-    height: '3.5rem',
-    borderRadius: '0.75rem',
+    height: '56px',
+    borderRadius: '12px',
+    fontSize: '17px',
+    lineHeight: '22px',
     backgroundColor: 'rgba(255, 255, 255, 0.18)',
     borderColor: 'transparent',
     boxShadow: 'none',

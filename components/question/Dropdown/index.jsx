@@ -18,9 +18,7 @@ const Dropdown = ({ id, survey, answers, setSurveyQuestionsWithAnswers }) => {
     setDropdownOptions(buildDropdownOptions(survey, answers));
   }, [id, survey, answers]);
 
-  const onOptionSelect = value => {
-    console.log(value);
-    const answerId = answers.find(answer => answer.id === value);
+  const onOptionSelect = answerId => {
     const surveyQuestionsWithAnswers = buildSurveyQuestionsWithAnswers(id, answerId);
     setSurveyQuestionsWithAnswers(prevSurveyQuestionWithAnswer => {
       let newSurveyQuestionWithAnswer = prevSurveyQuestionWithAnswer.slice();
