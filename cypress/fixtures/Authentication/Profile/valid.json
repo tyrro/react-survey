@@ -1,0 +1,11 @@
+{
+  "data": {
+    "id": "2",
+    "type": "user",
+    "attributes": {
+      "name": "John Doe",
+      "email": "john@doe.io",
+      "avatar_url": "https://secure.gravatar.com/avatar/6733d09432e89459dba795de8312ac2d"
+    }
+  }
+}
