@@ -1,6 +1,6 @@
 const surveyDetailsPageTestIds = {
   coverImageUrl: 'survey-details__cover_image_url',
-  title: 'survey-details__cover_image_url',
+  title: 'survey-details__title',
   introText: 'survey-details__intro-text',
   startSurveyButton: 'survey-details__start-survey',
 };

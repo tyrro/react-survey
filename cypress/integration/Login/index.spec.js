@@ -2,6 +2,7 @@ const loginPageTestIds = {
   inputEmail: 'login-form__input-email',
   inputPassword: 'login-form__input-password',
   submitButton: 'login-form__button',
+  loadingSkeletonClass: '.react-loading-skeleton',
 };
 
 describe('Login page', () => {
@@ -15,7 +16,7 @@ describe('Login page', () => {
 
       cy.findByTestId(loginPageTestIds.submitButton).click();
 
-      cy.get('.react-loading-skeleton').should('be.visible');
+      cy.get(loginPageTestIds.loadingSkeletonClass).should('be.visible');
 
       cy.location().should(location => {
         expect(location.pathname).to.eq('/');
