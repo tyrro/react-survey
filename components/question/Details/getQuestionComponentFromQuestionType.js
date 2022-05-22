@@ -1,3 +1,4 @@
+import Dropdown from '../Dropdown';
 import NetPromotingScore from '../NetPromotingScore';
 import Rating from '../Rating';
 import Textarea from '../Textarea';
@@ -8,8 +9,9 @@ export const questionComponentMapper = {
   star: Rating,
   money: Rating,
   thumb: Rating,
-  textarea: Textarea,
+  dropdown: Dropdown,
   nps: NetPromotingScore,
+  textarea: Textarea,
 };
 
 export const getQuestionComponentFromQuestionType = questionType => {
