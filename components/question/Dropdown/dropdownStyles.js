@@ -1,8 +1,13 @@
 export const dropdownStyles = {
-  option: (provided, optionProps) => ({
-    ...provided,
-    background: optionProps.isFocused || optionProps.isSelected ? 'grey' : 'inherit',
-  }),
+  option: (provided, state) => {
+    let backgroundColor = state.isFocused ? 'rgba(255, 255, 255, 0.18)' : 'inherit';
+
+    if (state.isSelected) {
+      backgroundColor = 'rgba(255, 255, 255, 0.5)';
+    }
+
+    return { ...provided, backgroundColor };
+  },
   control: provided => ({
     ...provided,
     height: '56px',
