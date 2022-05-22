@@ -1,0 +1,7 @@
+.scrollingSelect {
+  :global  {
+    .slick-list {
+      @apply h-[168px] mt-16 #{!important};
+    }
+  }
+}
