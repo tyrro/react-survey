@@ -3,18 +3,16 @@ import surveyAdapter from '.';
 
 describe('surveyAdapter', () => {
   describe('fetchSurveys', () => {
-    describe('given current page number and an authorization header', () => {
+    describe('given current page number', () => {
       it('calls the get method from base adapter', () => {
         const getSpy = jest.spyOn(baseAdapter, 'get').mockImplementation(jest.fn());
 
         const currentPage = 1;
-        const authorizationHeader = 'Bearer token';
         const expectedPath = `surveys?page[number]=${currentPage}`;
-        const requestOptions = { headers: authorizationHeader };
 
-        surveyAdapter.fetchSurveys(currentPage, authorizationHeader);
+        surveyAdapter.fetchSurveys(currentPage);
 
-        expect(getSpy).toHaveBeenCalledWith(expectedPath, requestOptions);
+        expect(getSpy).toHaveBeenCalledWith(expectedPath);
 
         getSpy.mockRestore();
       });
@@ -22,20 +20,49 @@ describe('surveyAdapter', () => {
   });
 
   describe('fetchSurvey', () => {
-    describe('given a survey id and an authorization header', () => {
+    describe('given a survey id', () => {
       it('calls the get method from base adapter', () => {
         const getSpy = jest.spyOn(baseAdapter, 'get').mockImplementation(jest.fn());
 
         const surveyId = 1;
-        const authorizationHeader = 'Bearer token';
         const expectedPath = `surveys/${surveyId}`;
-        const requestOptions = { headers: authorizationHeader };
 
-        surveyAdapter.fetchSurvey(surveyId, authorizationHeader);
+        surveyAdapter.fetchSurvey(surveyId);
 
-        expect(getSpy).toHaveBeenCalledWith(expectedPath, requestOptions);
+        expect(getSpy).toHaveBeenCalledWith(expectedPath);
 
         getSpy.mockRestore();
+      });
+    });
+  });
+
+  describe('submitSurvey', () => {
+    describe('given the survey response', () => {
+      it('calls the post method from base adapter', () => {
+        const postSpy = jest.spyOn(baseAdapter, 'post').mockImplementation(jest.fn());
+
+        const surveyOptions = {
+          surveyId: '1',
+          questions: [
+            {
+              id: '1',
+              answers: [
+                {
+                  id: '1',
+                },
+              ],
+            },
+          ],
+        };
+
+        const expectedPath = 'responses';
+        const expectedPayload = { surveyOptions };
+
+        surveyAdapter.submitSurvey(expectedPayload);
+
+        expect(postSpy).toHaveBeenCalledWith(expectedPath, expectedPayload);
+
+        postSpy.mockRestore();
       });
     });
   });
