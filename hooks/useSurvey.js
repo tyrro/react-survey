@@ -2,11 +2,10 @@ import Router from 'next/router';
 import useSWR from 'swr';
 
 import surveyAdapter from 'adapters/Survey';
-import { authorizationHeader } from 'adapters/Base';
 
 const fetcher = async (_url, id) => {
   try {
-    return await surveyAdapter.fetchSurvey(id, authorizationHeader());
+    return await surveyAdapter.fetchSurvey(id);
   } catch (error) {
     console.log(error);
     Router.push('/');

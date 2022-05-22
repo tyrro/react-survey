@@ -1,19 +1,16 @@
 import baseAdapter from 'adapters/Base';
 
 const SurveyAdapter = () => {
-  const fetchSurveys = (currentPage, authorizationHeader) =>
-    baseAdapter.get(`surveys?page[number]=${currentPage}`, {
-      headers: authorizationHeader,
-    });
+  const fetchSurveys = currentPage => baseAdapter.get(`surveys?page[number]=${currentPage}`);
 
-  const fetchSurvey = (surveyId, authorizationHeader) =>
-    baseAdapter.get(`surveys/${surveyId}`, {
-      headers: authorizationHeader,
-    });
+  const fetchSurvey = surveyId => baseAdapter.get(`surveys/${surveyId}`);
+
+  const submitSurvey = surveyResponse => baseAdapter.post('responses', surveyResponse);
 
   return {
     fetchSurveys,
     fetchSurvey,
+    submitSurvey,
   };
 };
 

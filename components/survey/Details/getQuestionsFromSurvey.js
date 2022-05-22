@@ -8,6 +8,7 @@ export const getQuestionsFromSurvey = survey => {
     question['type'] = questionDetails.attributes.displayType;
     question['pick'] = questionDetails.attributes.pick;
     question['text'] = questionDetails.attributes.text;
+    question['helpText'] = questionDetails.attributes.helpText;
     question['answers'] = questionDetails.relationships.answers.data;
   });
 

@@ -7,15 +7,20 @@ export const authorizationHeader = () => ({
   Authorization: `${getToken()?.tokenType} ${getToken()?.accessToken}`,
 });
 
+const defaultRequestOptions = () => ({ headers: authorizationHeader() });
+
 const BaseAdapter = () => {
-  const get = (path, requestOptions = {}) => {
-    requestOptions = snakecaseKeys(requestOptions, { exclude: ['Authorization'] });
+  const get = (path, params) => {
+    const requestOptions = { ...defaultRequestOptions() };
+    if (params) {
+      requestOptions.params = snakecaseKeys(params);
+    }
 
     return httpClient('get', path, requestOptions);
   };
 
   const post = (path, params) => {
-    let requestOptions = { data: snakecaseKeys(params) };
+    const requestOptions = { ...defaultRequestOptions(), data: snakecaseKeys(params) };
 
     return httpClient('post', path, requestOptions);
   };
