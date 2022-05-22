@@ -38,18 +38,17 @@ const RangeSlider = ({ id, answers, setSurveyQuestionsWithAnswers, helpText }) =
   };
 
   return (
-    <div className="h-14 flex items-center mt-16" aria-label={helpText} data-test-id={rangeSliderTestIds.base}>
-      <input
-        type="range"
-        min={minValue}
-        max={maxValue}
-        value={currentValue}
-        className={styles.rangeSlider}
-        onChange={event => onRangeValueChange(event.target.value)}
-        style={inputStyle}
-        data-test-id={rangeSliderTestIds.input}
-      />
-    </div>
+    <input
+      type="range"
+      min={minValue}
+      max={maxValue}
+      value={currentValue}
+      aria-label={helpText}
+      className={styles.rangeSlider}
+      onChange={event => onRangeValueChange(event.target.value)}
+      style={inputStyle}
+      data-test-id={rangeSliderTestIds.input}
+    />
   );
 };
 

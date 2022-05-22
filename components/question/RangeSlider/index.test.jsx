@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import RangeSlider, { rangeSliderTestIds } from '.';
 
@@ -9,6 +9,12 @@ describe('RangeSlider', () => {
       {
         id: '1',
       },
+      {
+        id: '2',
+      },
+      {
+        id: '3',
+      },
     ],
     setSurveyQuestionsWithAnswers: jest.fn(),
   };
@@ -17,15 +23,20 @@ describe('RangeSlider', () => {
     render(<RangeSlider {...props} />);
   });
 
-  it('renders a RangeSlider component', () => {
-    const rangeSlider = screen.getByTestId(rangeSliderTestIds.base);
+  it('renders a range type input', () => {
+    const rangeSlider = screen.getByTestId(rangeSliderTestIds.input);
 
     expect(rangeSlider).toBeVisible();
   });
 
-  it('renders a range type input', () => {
-    const inputField = screen.getByTestId(rangeSliderTestIds.input);
+  it('shows changes in input range', () => {
+    const inputValue = '2';
+    const rangeSlider = screen.getByTestId(rangeSliderTestIds.input);
 
-    expect(inputField).toHaveAttribute('type', 'range');
+    expect(rangeSlider).toHaveValue('0');
+
+    fireEvent.change(rangeSlider, { target: { value: inputValue } });
+
+    expect(rangeSlider).toHaveValue(inputValue);
   });
 });
