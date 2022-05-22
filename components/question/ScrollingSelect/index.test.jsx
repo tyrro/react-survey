@@ -41,30 +41,12 @@ describe('ScrollingSelect', () => {
     buildSelectOptions.mockImplementation(() => mockSelectOptions);
   });
 
-  it('renders a scrollingSelect component', () => {
-    render(<ScrollingSelect {...props} />);
-
-    const scrollingSelect = screen.getByTestId(scrollingSelectTestIds.base);
-
-    expect(scrollingSelect).toBeVisible();
-  });
-
   it('renders select options equal to the provided options', () => {
     render(<ScrollingSelect {...props} />);
 
     const totalSelectOptions = screen.getAllByTestId(scrollingSelectTestIds.option);
 
     expect(totalSelectOptions).toHaveLength(mockSelectOptions.length);
-  });
-
-  describe('given the question pick is any', () => {
-    it('renders a multi select box', () => {
-      render(<ScrollingSelect {...props} />);
-
-      const circleCheckIcons = screen.getAllByTestId(scrollingSelectTestIds.icon);
-
-      expect(circleCheckIcons).toHaveLength(mockSelectOptions.length);
-    });
   });
 
   describe('given the question pick is any', () => {

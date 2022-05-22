@@ -32,6 +32,7 @@ const ScrollingSelect = ({ id, pick, survey, answers, setSurveyQuestionsWithAnsw
 
   useEffect(() => {
     setActiveOption(selectOptions[0]?.value);
+    sliderRef.current.slickGoTo(0);
   }, [selectOptions]);
 
   const sliderRef = useRef();
@@ -106,25 +107,28 @@ const ScrollingSelect = ({ id, pick, survey, answers, setSurveyQuestionsWithAnsw
   const sliderConfig = { ...sliderSettings, ...sliderEvents };
 
   return (
-    <div data-test-id={scrollingSelectTestIds.base}>
-      <Slider {...sliderConfig} ref={sliderRef} className={styles.scrollingSelect} data-test-id={scrollingSelectTestIds.base}>
-        {selectOptions.map((option, index) => (
-          <div
-            className={classNames('h-14 !flex items-center', isMultipleSelect ? 'justify-between' : 'justify-center', {
+    <Slider {...sliderConfig} ref={sliderRef} className={styles.scrollingSelect}>
+      {selectOptions.map((option, index) => (
+        <div
+          className={classNames(
+            'h-14 !flex items-center',
+            isMultipleSelect ? 'justify-between' : 'justify-center',
+            {
               'border-y-[0.5px] border-white': activeOption === option.value,
-            })}
-            key={option.value}
-            data-test-id={scrollingSelectTestIds.option}
-            onClick={() => onOptionSelect(index)}
-          >
-            <div className={classNames('text-white text-base-xl', { 'font-extrabold': activeOption === option.value })}>
-              {option.label}
-            </div>
-            {renderCheckBox(option)}
+            },
+            { 'cursor-pointer': activeOption === option.value },
+          )}
+          key={option.value}
+          data-test-id={scrollingSelectTestIds.option}
+          onClick={() => onOptionSelect(index)}
+        >
+          <div className={classNames('text-base-xl', activeOption === option.value ? 'text-white' : 'text-white/50')}>
+            {option.label}
           </div>
-        ))}
-      </Slider>
-    </div>
+          {renderCheckBox(option)}
+        </div>
+      ))}
+    </Slider>
   );
 };
 
