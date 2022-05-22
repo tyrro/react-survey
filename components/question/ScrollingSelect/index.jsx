@@ -24,6 +24,7 @@ export const scrollingSelectTestIds = {
 const ScrollingSelect = ({ id, pick, survey, answers, setSurveyQuestionsWithAnswers }) => {
   const [selectOptions, setSelectOptions] = useState([]);
   const [activeOption, setActiveOption] = useState(null);
+  const sliderRef = useRef();
   const isMultipleSelect = pick === 'any';
 
   useEffect(() => {
@@ -35,7 +36,6 @@ const ScrollingSelect = ({ id, pick, survey, answers, setSurveyQuestionsWithAnsw
     sliderRef.current.slickGoTo(0);
   }, [selectOptions]);
 
-  const sliderRef = useRef();
   const scroll = useCallback(
     y => {
       if (y > 0) {
