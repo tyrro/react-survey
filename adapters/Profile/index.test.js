@@ -3,20 +3,15 @@ import profileAdapter from '.';
 
 describe('profileAdapter', () => {
   describe('fetchUser', () => {
-    describe('given an authorization header', () => {
-      it('calls the get method from base adapter', () => {
-        const getSpy = jest.spyOn(baseAdapter, 'get').mockImplementation(jest.fn());
+    it('calls the get method from base adapter', () => {
+      const getSpy = jest.spyOn(baseAdapter, 'get').mockImplementation(jest.fn());
+      const expectedPath = 'me';
 
-        const authorizationHeader = 'Bearer token';
-        const expectedPath = 'me';
-        const requestOptions = { headers: authorizationHeader };
+      profileAdapter.fetchUser();
 
-        profileAdapter.fetchUser(authorizationHeader);
+      expect(getSpy).toHaveBeenCalledWith(expectedPath);
 
-        expect(getSpy).toHaveBeenCalledWith(expectedPath, requestOptions);
-
-        getSpy.mockRestore();
-      });
+      getSpy.mockRestore();
     });
   });
 });
