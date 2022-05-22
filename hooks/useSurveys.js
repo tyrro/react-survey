@@ -1,10 +1,9 @@
 import useSWR from 'swr';
 
 import surveyAdapter from 'adapters/Survey';
-import { authorizationHeader } from 'adapters/Base';
 
 const fetcher = async (_url, currentPage) => {
-  const response = await surveyAdapter.fetchSurveys(currentPage, authorizationHeader());
+  const response = await surveyAdapter.fetchSurveys(currentPage);
 
   return response;
 };
