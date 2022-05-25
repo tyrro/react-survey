@@ -7,11 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "stylelint": "stylelint '**/*.scss'",
+    "stylelint": "stylelint",
     "stylelint:fix": "stylelint '**/*.scss' --fix",
     "test": "jest --watch",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
+    "e2e:open": "start-server-and-test dev 3000 cypress:open",
+    "e2e:run": "start-server-and-test dev 3000 cypress:run",
     "test:coverage": "rm -f ./.nyc_output/out.json && yarn test --coverage --watchAll=false && yarn cypress:run && node ./scripts/coverage-merge.js && nyc report",
     "test:coverage-merge": "node ./scripts/coverage-merge.js && nyc report"
   },
@@ -39,6 +41,7 @@
   "devDependencies": {
     "@cypress/code-coverage": "3.9.12",
     "@nimblehq/eslint-config-nimble": "2.2.1",
+    "@nimblehq/stylelint-config-nimble": "1.0.0",
     "@testing-library/cypress": "8.0.2",
     "@testing-library/jest-dom": "5.16.2",
     "@testing-library/react": "12.1.4",
@@ -55,11 +58,8 @@
     "postcss": "8.4.12",
     "prettier": "2.6.0",
     "sass": "1.49.9",
+    "start-server-and-test": "1.14.0",
     "stylelint": "14.6.0",
-    "stylelint-config-property-sort-order-smacss": "9.0.0",
-    "stylelint-config-sass-guidelines": "9.0.1",
-    "stylelint-order": "5.0.0",
-    "stylelint-scss": "4.2.0",
     "tailwindcss": "3.0.23"
   },
   "engines": {
