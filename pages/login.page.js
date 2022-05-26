@@ -10,7 +10,7 @@ export const loginPageTestIds = {
 const Login = () => {
   return (
     <Background imagePath="/background.png">
-      <div className="h-full w-80 m-auto flex flex-col justify-center items-center">
+      <div className="w-80 absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4">
         <div className="mb-8">
           <div className="h-10 text-center mb-6">
             <Image src={logo} alt="logo" />
