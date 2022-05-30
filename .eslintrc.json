@@ -1,0 +1,6 @@
+{
+  "extends": ["next/core-web-vitals", "@nimblehq/eslint-config-nimble", "plugin:cypress/recommended", "prettier"],
+  "env": {
+    "jest": true
+  }
+}

@@ -4,7 +4,9 @@
 /.idea
 /coverage/
 /InstalledFiles
-/node-modules
+/node_modules
+/.next
+.eslintcache
 /pkg/
 /spec/reports/
 /spec/examples.txt
@@ -13,7 +15,7 @@
 /tmp/
 
 # Used by dotenv library to load environment variables.
-# .env
+.env
 
 ## Documentation cache and generated files:
 /.yardoc/
@@ -34,3 +36,9 @@
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
+
+# testing
+.nyc_output
+/coverage
+/cypress/screenshots
+/cypress/videos

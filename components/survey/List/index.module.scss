@@ -1,0 +1,20 @@
+/* stylelint-disable selector-class-pattern */
+.slickDots {
+  @apply fixed left-0 mb-[42px];
+
+  li {
+    button::before,
+    button:focus::before {
+      @apply text-white opacity-20; }
+
+    button:hover::before {
+      @apply text-white opacity-100; }
+  }
+  /* stylelint-disable selector-no-qualifying-type, selector-max-compound-selectors */
+  :global li.slick-active {
+    button::before {
+      @apply text-white opacity-100; }
+  }
+  /* stylelint-enable selector-no-qualifying-type, selector-max-compound-selectors */
+}
+/* stylelint-enable selector-class-pattern */
