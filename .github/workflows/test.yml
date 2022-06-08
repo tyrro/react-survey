@@ -9,6 +9,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x]
+        shard: [1, 2]
 
     steps:
       - name: Cancel previous runs
@@ -28,14 +29,16 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Run Jest test
-        run: yarn test --coverage --watchAll=false
+      - name: Run Jest (${{ matrix.shard }}/${{ strategy.job-total }})
+        run: |
+          yarn test --coverage --watchAll=false --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+          mv coverage/jest/coverage-final.json coverage/jest/${{ matrix.shard }}.json
 
       - name: Upload test coverage
         uses: actions/upload-artifact@v3
         with:
           name: jest-coverage
-          path: coverage/coverage-final.json
+          path: coverage/jest
 
   test-ui:
     runs-on: ubuntu-latest
@@ -113,7 +116,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: jest-coverage
-          path: coverage
+          path: coverage/jest
 
       - name: Download ui test coverage report
         uses: actions/download-artifact@v3
