@@ -27,7 +27,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn
+        run: yarn install --immutable --immutable-cache --check-cache
 
       - name: Run Jest (${{ matrix.shard }}/${{ strategy.job-total }})
         run: |
@@ -61,9 +61,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
-
-      - name: Install dependencies
-        run: yarn
 
       - name: Run Cypress test
         uses: cypress-io/github-action@v4
@@ -108,9 +105,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
-
-      - name: Install dependencies
-        run: yarn
 
       - name: Download unit test coverage report
         uses: actions/download-artifact@v3
