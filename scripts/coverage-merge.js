@@ -4,7 +4,7 @@
  */
 const { execSync } = require('child_process');
 const fs = require('fs-extra');
-const COVERAGE_JEST_FOLDER = 'coverage';
+const COVERAGE_JEST_FOLDER = 'coverage/jest';
 const COVERAGE_CYPRESS_FOLDER = 'coverage/cypress';
 const REPORTS_FOLDER = 'coverage/reports';
 const FINAL_OUTPUT_FOLDER = 'coverage/merged';
@@ -13,8 +13,8 @@ const run = commands => {
 };
 // Create the reports folder and move the reports from cypress and jest inside it
 fs.emptyDirSync(REPORTS_FOLDER);
+fs.copySync(`${COVERAGE_JEST_FOLDER}`, `${REPORTS_FOLDER}`);
 fs.copyFileSync(`${COVERAGE_CYPRESS_FOLDER}/coverage-final.json`, `${REPORTS_FOLDER}/from-cypress.json`);
-fs.copyFileSync(`${COVERAGE_JEST_FOLDER}/coverage-final.json`, `${REPORTS_FOLDER}/from-jest.json`);
 fs.emptyDirSync('.nyc_output');
 fs.emptyDirSync(FINAL_OUTPUT_FOLDER);
 // Run "nyc merge" inside the reports folder, merging the two coverage files into one,
